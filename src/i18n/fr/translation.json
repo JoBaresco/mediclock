@@ -1,0 +1,230 @@
+{
+  "app": {
+    "name": "MediClock",
+    "tagline": "La santé. À l'heure qui compte pour vous.",
+    "taglineShort": "Deja que MediClock piense en tu salud para que tú puedas pensar en tu vida."
+  },
+  "splash": {
+    "message": "Deja que MediClock piense en tu salud\npara que tú puedas pensar en tu vida."
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Bienvenue sur MediClock",
+      "subtitle": "Deja que MediClock piense en tu salud para que tú puedas penser en tu vida.",
+      "cta": "Commencer"
+    },
+    "createSpace": {
+      "title": "Votre espace personnel",
+      "subtitle": "Ce sera votre espace au sein de MediClock.",
+      "namePlaceholder": "Votre prénom",
+      "dobLabel": "Date de naissance (optionnel)",
+      "genderLabel": "Genre (optionnel)",
+      "genderMale": "Homme",
+      "genderFemale": "Femme",
+      "cta": "Continuer",
+      "skip": "Passer pour l'instant"
+    },
+    "firstTreatment": {
+      "title": "Ajoutez votre premier traitement",
+      "subtitle": "La façon la plus rapide est de scanner la boîte de votre médicament.",
+      "ctaScan": "Scanner une boîte",
+      "ctaManual": "Ajouter manuellement",
+      "skip": "Passer pour l'instant"
+    },
+    "firstAppointment": {
+      "title": "Ajoutez votre prochain rendez-vous (optionnel)",
+      "subtitle": "Nous vous aiderons à être préparé et à l'heure.",
+      "cta": "Continuer",
+      "skip": "Passer cette étape"
+    },
+    "myCircle": {
+      "title": "Votre cercle de confiance (optionnel)",
+      "subtitle": "Invitez une personne de confiance pour qu'elle soit informée et puisse vous aider.",
+      "cta": "Inviter quelqu'un",
+      "skip": "Je le ferai plus tard"
+    },
+    "ready": {
+      "title": "Tout est prêt !",
+      "subtitle": "Nous avons préparé votre espace. Vous pouvez commencer à prendre soin de votre santé en toute tranquillité.",
+      "cta": "Entrer dans MediClock"
+    }
+  },
+  "today": {
+    "title": "Aujourd'hui",
+    "greeting": "Bonjour, {{name}}",
+    "date": "{{date}}",
+    "status": {
+      "allGood": "Tout est sous contrôle.",
+      "allGoodSub": "Aucune action importante pour le moment.",
+      "actionPending": "Vous avez quelque chose à faire.",
+      "attentionRequired": "Cela nécessite votre attention.",
+      "noTreatments": "Vous n'avez pas encore ajouté de traitement.",
+      "caregiverMode": "Vue de {{name}}"
+    },
+    "nextAction": "Prochaine action",
+    "nextAppointment": "Prochain rendez-vous",
+    "sampleAction": "08:00 — Traitement du matin",
+    "sampleActionDetail": "3 médicaments",
+    "sampleAppointment": "Cardiologie",
+    "sampleAppointmentDetail": "Demain — 10:00",
+    "importantInfo": "Information importante",
+    "markDone": "Je l'ai pris",
+    "addTreatment": "Ajouter un traitement",
+    "contextual": {
+      "hydration": "Pensez à bien vous hydrater aujourd'hui.",
+      "stockLow": "Votre stock de {{name}} est faible. Pensez au renouvellement.",
+      "appointmentTomorrow": "Vous avez un rendez-vous demain à {{time}}."
+    }
+  },
+  "treatments": {
+    "title": "Traitements",
+    "active": "Actifs",
+    "history": "Historique",
+    "add": "Ajouter un traitement",
+    "scan": "Scanner une boîte",
+    "manual": "Ajouter manuellement",
+    "empty": "Aucun traitement actif.",
+    "emptyHint": "Ajoutez votre premier traitement pour commencer.",
+    "types": {
+      "tablet": "Comprimé",
+      "capsule": "Gélule",
+      "drops": "Gouttes",
+      "eye_drops": "Collyre",
+      "injection": "Injection",
+      "inhaler": "Inhalateur",
+      "cream": "Crème",
+      "patch": "Patch",
+      "syrup": "Solution buvable",
+      "other": "Autre"
+    },
+    "duration": {
+      "single": "Prise unique",
+      "days": "{{n}} jours",
+      "weeks": "{{n}} semaines",
+      "months": "{{n}} mois",
+      "until_empty": "Jusqu'à fin de boîte",
+      "specific_date": "Jusqu'au {{date}}",
+      "indefinite": "Traitement au long cours"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "add": "Ajouter un document",
+    "scan": "Scanner",
+    "import": "Importer",
+    "empty": "Aucun document enregistré.",
+    "emptyHint": "Gardez vos documents médicaux en sécurité ici.",
+    "categories": {
+      "prescription": "Ordonnance",
+      "analysis": "Analyse",
+      "report_cardiology": "Cardiologie",
+      "report_neurology": "Neurologie",
+      "report_traumatology": "Traumatologie",
+      "report_ophthalmology": "Ophtalmologie",
+      "report_radiology": "Radiologie",
+      "hospitalization": "Hospitalisation",
+      "surgery": "Chirurgie",
+      "vaccine": "Vaccin",
+      "admin_vitale": "Carte Vitale",
+      "admin_insurance": "Mutuelle",
+      "admin_ald": "ALD",
+      "admin_certificate": "Certificat",
+      "other": "Autre"
+    }
+  },
+  "mySpace": {
+    "title": "Mon espace",
+    "healthProfile": "Profil santé",
+    "myCircle": "Mon cercle",
+    "emergency": "Urgence",
+    "language": "Langue",
+    "security": "Sécurité",
+    "backup": "Sauvegarde",
+    "subscription": "MediClock Plus",
+    "professionals": "Mes professionnels",
+    "privacy": "Confidentialité"
+  },
+  "emergency": {
+    "title": "Urgence",
+    "subtitle": "En cas d'urgence",
+    "accessLevel": {
+      "disabled": "Désactivé",
+      "app_only": "Dans l'application uniquement",
+      "lock_screen": "Depuis l'écran verrouillé",
+      "lock_screen_sos": "Écran verrouillé + SOS"
+    },
+    "quickMessages": {
+      "need_help": "J'ai besoin d'aide.",
+      "at_hospital": "Je suis à l'hôpital.",
+      "false_alarm": "Tout va bien, c'était une fausse alerte.",
+      "back_home": "Je suis rentré à la maison."
+    }
+  },
+  "circle": {
+    "title": "Mon cercle",
+    "subtitle": "Les personnes qui vous accompagnent",
+    "add": "Ajouter une personne",
+    "invite": {
+      "byPhone": "Par téléphone",
+      "byEmail": "Par email",
+      "byContacts": "Depuis mes contacts",
+      "byQR": "Code QR MediClock",
+      "byLink": "Lien sécurisé"
+    },
+    "roles": {
+      "trusted_person": "Personne de confiance",
+      "family": "Familial",
+      "caregiver": "Aidant",
+      "doctor": "Médecin",
+      "nurse": "Infirmière",
+      "pharmacist": "Pharmacien",
+      "other": "Autre"
+    },
+    "quickMessages": {
+      "all_good": "Tout va bien.",
+      "took_treatment": "J'ai pris mon traitement.",
+      "went_for_walk": "Je suis sorti marcher.",
+      "arrived_consultation": "Je suis arrivé à la consultation.",
+      "back_home": "Je suis rentré à la maison.",
+      "going_to_rest": "Je vais me reposer.",
+      "need_help": "J'ai besoin d'aide.",
+      "at_hospital": "Je suis à l'hôpital.",
+      "safely_home": "Je suis bien rentré."
+    },
+    "empty": "Votre cercle est vide pour l'instant.",
+    "emptyHint": "Invitez une personne de confiance pour qu'elle puisse vous accompagner."
+  },
+  "capture": {
+    "title": "Scanner un médicament",
+    "hint": "Pointez la caméra vers la boîte",
+    "notMedication": "Ce code ne correspond pas à un médicament.",
+    "notMedicationHint": "Vérifiez que vous scannez bien une boîte de médicament.",
+    "retry": "Scanner à nouveau",
+    "addManually": "Ajouter manuellement",
+    "recognized": "Médicament reconnu",
+    "notRecognized": "Nous n'avons pas pu reconnaître la boîte. Vous pouvez réessayer ou ajouter le traitement manuellement."
+  },
+  "notifications": {
+    "disabled": "Les rappels sont désactivés. Vous pouvez les activer plus tard dans les réglages.",
+    "enableHint": "Activer dans les réglages"
+  },
+  "errors": {
+    "generic": "Quelque chose ne s'est pas passé comme prévu. Nous allons arranger ça.",
+    "retry": "Réessayer",
+    "goBack": "Retour"
+  },
+  "common": {
+    "continue": "Continuer",
+    "skip": "Passer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "done": "Terminé",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "D'accord",
+    "loading": "Chargement...",
+    "optional": "optionnel"
+  }
+}

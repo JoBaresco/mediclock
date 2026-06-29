@@ -1,0 +1,60 @@
+{
+  "app": {
+    "name": "MediClock",
+    "tagline": "Your health, organized. Your peace of mind, shared.",
+    "taglineShort": "Let MediClock think about your health so you can think about your life."
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Welcome to MediClock",
+      "subtitle": "Let MediClock think about your health so you can think about your life.",
+      "cta": "Get Started"
+    },
+    "createSpace": {
+      "title": "Your personal space",
+      "subtitle": "This will be your space within MediClock.",
+      "namePlaceholder": "Your first name",
+      "cta": "Continue",
+      "skip": "Skip for now"
+    },
+    "firstTreatment": {
+      "title": "Add your first treatment",
+      "subtitle": "The fastest way is to scan your medication box.",
+      "ctaScan": "Scan a box",
+      "ctaManual": "Add manually",
+      "skip": "Skip for now"
+    },
+    "ready": {
+      "title": "All set!",
+      "subtitle": "We've prepared your space. You can start taking care of your health with peace of mind.",
+      "cta": "Enter MediClock"
+    }
+  },
+  "today": {
+    "title": "Today",
+    "greeting": "Good morning, {{name}}",
+    "status": {
+      "allGood": "Everything is under control.",
+      "allGoodSub": "No important actions right now.",
+      "actionPending": "You have something to do.",
+      "attentionRequired": "Something needs your attention.",
+      "noTreatments": "You haven't added any treatments yet."
+    },
+    "nextAction": "Next action",
+    "nextAppointment": "Next appointment",
+    "sampleAction": "08:00 — Morning treatment",
+    "sampleActionDetail": "3 medications",
+    "sampleAppointment": "Cardiology",
+    "sampleAppointmentDetail": "Tomorrow — 10:00",
+    "markDone": "Mark as done"
+  },
+  "common": {
+    "continue": "Continue",
+    "skip": "Skip",
+    "save": "Save",
+    "cancel": "Cancel",
+    "done": "Done",
+    "loading": "Loading...",
+    "optional": "optional"
+  }
+}
