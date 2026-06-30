@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.md,
   } as ViewStyle,
   md: {
-    height: 52,
+    height: 54,
     paddingHorizontal: Spacing.lg,
   } as ViewStyle,
   lg: {

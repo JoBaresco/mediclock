@@ -45,6 +45,8 @@ export interface Treatment {
   notes?: string;
   laboratory?: string;
   barcode?: string;
+  lastTakenAt?: string;
+  notificationIds?: string[];
   createdAt: string;
   updatedAt: string;
 }

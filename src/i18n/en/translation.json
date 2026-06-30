@@ -42,10 +42,10 @@
     },
     "nextAction": "Next action",
     "nextAppointment": "Next appointment",
-    "sampleAction": "08:00 — Morning treatment",
+    "sampleAction": "08:00 - Morning treatment",
     "sampleActionDetail": "3 medications",
     "sampleAppointment": "Cardiology",
-    "sampleAppointmentDetail": "Tomorrow — 10:00",
+    "sampleAppointmentDetail": "Tomorrow - 10:00",
     "markDone": "Mark as done"
   },
   "common": {

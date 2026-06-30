@@ -33,21 +33,26 @@ const weightStyles: Record<MCTextWeight, TextStyle> = {
 export const MCText: React.FC<MCTextProps> = ({
   variant = 'body',
   weight = 'regular',
-  color = 'primary',
+  color,
   style,
   children,
   ...rest
 }) => {
+  const defaultColor =
+    variant === 'display' || variant === 'h1' || variant === 'h2' ? 'primary' : 'secondary';
+
+  const resolvedColor = color ?? defaultColor;
+
   const textColor =
-    color === 'primary'
+    resolvedColor === 'primary'
       ? Colors.textPrimary
-      : color === 'secondary'
+      : resolvedColor === 'secondary'
       ? Colors.textSecondary
-      : color === 'tertiary'
+      : resolvedColor === 'tertiary'
       ? Colors.textTertiary
-      : color === 'inverse'
+      : resolvedColor === 'inverse'
       ? Colors.textInverse
-      : color;
+      : resolvedColor;
 
   return (
     <Text style={[styles.base, variantStyles[variant], weightStyles[weight], { color: textColor }, style]} {...rest}>

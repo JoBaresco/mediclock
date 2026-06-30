@@ -2,15 +2,15 @@
   "app": {
     "name": "MediClock",
     "tagline": "La santé. À l'heure qui compte pour vous.",
-    "taglineShort": "Deja que MediClock piense en tu salud para que tú puedas pensar en tu vida."
+    "taglineShort": "Laissez MediClock penser à votre santé pour que vous puissiez penser à votre vie."
   },
   "splash": {
-    "message": "Deja que MediClock piense en tu salud\npara que tú puedas pensar en tu vida."
+    "message": "Laissez MediClock penser à votre santé\npour que vous puissiez penser à votre vie."
   },
   "onboarding": {
     "welcome": {
       "title": "Bienvenue sur MediClock",
-      "subtitle": "Deja que MediClock piense en tu salud para que tú puedas penser en tu vida.",
+      "subtitle": "Laissez MediClock penser à votre santé pour que vous puissiez penser à votre vie.",
       "cta": "Commencer"
     },
     "createSpace": {
@@ -85,6 +85,13 @@
     "manual": "Ajouter manuellement",
     "empty": "Aucun traitement actif.",
     "emptyHint": "Ajoutez votre premier traitement pour commencer.",
+    "frequencyLabels": {
+      "daily": "Quotidien",
+      "weekly": "Hebdo",
+      "as_needed": "Si besoin",
+      "every_x_days": "Tous X jours",
+      "every_x_days_value": "tous les {{n}} jours"
+    },
     "types": {
       "tablet": "Comprimé",
       "capsule": "Gélule",
