@@ -10,7 +10,12 @@ export function SmartCaptureScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
+      <View style={styles.logoFrame}>
+        <Image source={require('../../assets/images/Master_MediClock_seul_V.1.png')} style={styles.logo} resizeMode="contain" />
+      </View>
+      <View style={styles.heroFrame}>
+        <Image source={require('../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
+      </View>
       <MCText style={styles.kicker}>Smart Capture</MCText>
       <MCText style={styles.title}>Capturez. MediClock structure.</MCText>
       <MCText style={styles.subtitle}>
@@ -38,10 +43,25 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 28,
   },
+  logoFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 16,
+  },
+  logo: {
+    width: 120,
+    height: 40,
+  },
+  heroFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 18,
+  },
   heroImage: {
     width: '100%',
     height: 170,
-    marginBottom: 18,
   },
   kicker: {
     color: Colors.primary,

@@ -9,14 +9,25 @@ export function MySpaceScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Image source={require('../../../assets/images/Cercle_II.png')} style={styles.heroImage} resizeMode="contain" />
+      <View style={styles.logoFrame}>
+        <Image
+          source={require('../../../assets/images/Master_MediClock_seul_V.1.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </View>
+      <View style={styles.heroFrame}>
+        <Image source={require('../../../assets/images/Cercle_II.png')} style={styles.heroImage} resizeMode="contain" />
+      </View>
       <MCText style={styles.kicker}>Mon Espace</MCText>
       <MCText style={styles.title}>Paramètres personnels et sécurité.</MCText>
       <MCText style={styles.subtitle}>Pilotez votre cercle et votre protocole d'urgence en un geste.</MCText>
 
       <TouchableOpacity activeOpacity={0.86} onPress={() => router.push('/my-circle')}>
         <MCCard style={styles.card}>
-          <Image source={require('../../../assets/images/Famille_Cercle.png')} style={styles.cardIcon} resizeMode="contain" />
+          <View style={styles.cardIconFrame}>
+            <Image source={require('../../../assets/images/Famille_Cercle.png')} style={styles.cardIcon} resizeMode="contain" />
+          </View>
           <MCText style={styles.cardTitle}>Mon Cercle</MCText>
           <MCText style={styles.cardBody}>Invitations, permissions, suivi des proches.</MCText>
         </MCCard>
@@ -24,7 +35,9 @@ export function MySpaceScreen() {
 
       <TouchableOpacity activeOpacity={0.86} onPress={() => router.push('/emergency')}>
         <MCCard style={styles.card}>
-          <Image source={require('../../../assets/images/Urgence.png')} style={styles.cardIcon} resizeMode="contain" />
+          <View style={styles.cardIconFrame}>
+            <Image source={require('../../../assets/images/Urgence.png')} style={styles.cardIcon} resizeMode="contain" />
+          </View>
           <MCText style={styles.cardTitle}>Urgence</MCText>
           <MCText style={styles.cardBody}>Contact prioritaire et actions critiques.</MCText>
         </MCCard>
@@ -43,10 +56,25 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 120,
   },
+  logoFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 16,
+  },
+  logo: {
+    width: 120,
+    height: 40,
+  },
+  heroFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 8,
+    marginBottom: 18,
+  },
   heroImage: {
     width: '100%',
-    height: 170,
-    marginBottom: 18,
+    height: 118,
   },
   kicker: {
     color: '#2F80ED',
@@ -81,10 +109,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     padding: 20,
   },
-  cardIcon: {
-    width: 56,
-    height: 56,
+  cardIconFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 14,
+    padding: 8,
+    alignSelf: 'flex-start',
     marginBottom: 10,
+  },
+  cardIcon: {
+    width: 44,
+    height: 44,
   },
   cardTitle: {
     color: '#102033',

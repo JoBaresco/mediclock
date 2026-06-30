@@ -1,13 +1,21 @@
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
 import { Typography } from '../../theme';
 
 export function DocumentsScreen() {
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Image source={require('../../../assets/images/Calendrier.png')} style={styles.heroImage} resizeMode="contain" />
+      <View style={styles.headerRow}>
+        <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+      </View>
+      <View style={styles.imageFrame}>
+        <Image source={require('../../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
+      </View>
       <MCText style={styles.kicker}>Documents</MCText>
       <MCText style={styles.title}>Vos documents de santé, centralisés.</MCText>
       <MCText style={styles.subtitle}>Ordonnances, comptes rendus, analyses. Tout reste clair et disponible.</MCText>
@@ -34,10 +42,18 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 120,
   },
+  headerRow: {
+    marginBottom: 12,
+  },
+  imageFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 18,
+  },
   heroImage: {
     width: '100%',
     height: 170,
-    marginBottom: 18,
   },
   kicker: {
     color: '#2F80ED',

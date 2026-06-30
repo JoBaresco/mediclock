@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
     maxWidth: 330,
   },
   logo: {
-    width: 210,
-    height: 210,
+    width: 120,
+    height: 40,
     marginBottom: 14,
   },
   accent: {

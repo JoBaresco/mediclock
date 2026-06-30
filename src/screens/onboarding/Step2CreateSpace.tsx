@@ -1,4 +1,5 @@
 import { ScrollView, StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCInput } from '../../components/ui/MCInput';
 import { MCText } from '../../components/ui/MCText';
@@ -10,8 +11,13 @@ type Step2CreateSpaceProps = {
 };
 
 export function Step2CreateSpace({ onContinue, onSkip }: Step2CreateSpaceProps) {
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <View style={styles.headerRow}>
+        <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+      </View>
       <View style={styles.badge}>
         <MCText style={styles.badgeText}>Étape 2/6</MCText>
       </View>
@@ -44,6 +50,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 72,
     paddingBottom: 36,
+  },
+  headerRow: {
+    marginBottom: 12,
   },
   badge: {
     alignSelf: 'flex-start',

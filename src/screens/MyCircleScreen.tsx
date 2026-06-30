@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Alert, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { MCButton } from '../components/ui/MCButton';
 import { MCCard } from '../components/ui/MCCard';
 import { MCInput } from '../components/ui/MCInput';
@@ -9,6 +10,7 @@ import { useCircleStore } from '../store/useCircleStore';
 import { isValidEmail } from '../utils/validation.utils';
 
 export function MyCircleScreen() {
+  const router = useRouter();
   const members = useCircleStore((state) => state.members);
   const addMemberByEmail = useCircleStore((state) => state.addMemberByEmail);
   const removeMember = useCircleStore((state) => state.removeMember);
@@ -54,6 +56,9 @@ export function MyCircleScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <View style={styles.headerRow}>
+        <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+      </View>
       <MCText style={styles.kicker}>Mon Cercle</MCText>
       <MCText style={styles.title}>Votre réseau de confiance.</MCText>
       <MCText style={styles.subtitle}>Invitez proches et aidants pour partager l'essentiel au bon moment.</MCText>
@@ -94,6 +99,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 24,
     paddingBottom: 120,
+  },
+  headerRow: {
+    marginBottom: 12,
   },
   kicker: {
     color: Colors.primary,

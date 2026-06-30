@@ -1,4 +1,5 @@
 import { ImageBackground, Pressable, StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Typography } from '../../theme';
 import { MCText } from '../../components/ui/MCText';
@@ -8,6 +9,8 @@ type Step1WelcomeProps = {
 };
 
 export function Step1Welcome({ onContinue }: Step1WelcomeProps) {
+  const router = useRouter();
+
   return (
     <ImageBackground
       source={require('../../../assets/images/pont_mediclock.png')}
@@ -15,6 +18,11 @@ export function Step1Welcome({ onContinue }: Step1WelcomeProps) {
       resizeMode="cover"
     >
       <SafeAreaView style={styles.overlay} edges={['top', 'bottom']}>
+        <View style={styles.headerRow}>
+          <Pressable style={styles.backButton} onPress={() => router.back()}>
+            <MCText style={styles.backLabel}>Retour</MCText>
+          </Pressable>
+        </View>
         <View style={styles.copyBlock}>
           <MCText style={styles.title}>Bienvenue dans MediClock</MCText>
           <MCText style={styles.body}>Votre espace de santé clair, calme et toujours à jour.</MCText>
@@ -40,6 +48,21 @@ const styles = StyleSheet.create({
     paddingBottom: 18,
     justifyContent: 'space-between',
     backgroundColor: 'rgba(250, 251, 252, 0.86)',
+  },
+  headerRow: {
+    alignItems: 'flex-start',
+  },
+  backButton: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+  },
+  backLabel: {
+    color: Colors.primary,
+    fontFamily: Typography.fonts.title,
+    fontSize: 13,
+    lineHeight: 16,
   },
   copyBlock: {
     maxWidth: 334,

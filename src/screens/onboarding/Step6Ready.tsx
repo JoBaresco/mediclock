@@ -1,4 +1,5 @@
 import { Image, StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
@@ -9,9 +10,14 @@ type Step6ReadyProps = {
 };
 
 export function Step6Ready({ onFinish }: Step6ReadyProps) {
+  const router = useRouter();
+
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <View>
+        <View style={styles.headerRow}>
+          <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+        </View>
         <MCText style={styles.step}>Étape 6/6</MCText>
         <MCText style={styles.title}>Votre espace MediClock est prêt</MCText>
         <MCText style={styles.subtitle}>
@@ -45,6 +51,9 @@ const styles = StyleSheet.create({
     paddingTop: 18,
     paddingBottom: 14,
     justifyContent: 'space-between',
+  },
+  headerRow: {
+    marginBottom: 12,
   },
   step: {
     color: Colors.primary,

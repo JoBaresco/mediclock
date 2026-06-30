@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Alert, Image, Platform, View, StyleSheet, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
 import { MCText } from '../../src/components/ui/MCText';
 import { MCCard } from '../../src/components/ui/MCCard';
 import { MCButton } from '../../src/components/ui/MCButton';
@@ -12,6 +13,7 @@ import { LocalNotificationService } from '../../src/services/notifications';
 import type { TreatmentSchedule } from '../../src/types/treatment.types';
 
 export default function TreatmentsScreen() {
+  const router = useRouter();
   const { t } = useTranslation();
   const [name, setName] = useState('');
   const [dosage, setDosage] = useState('1 comprimé');
@@ -195,7 +197,19 @@ export default function TreatmentsScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.header}>
-        <Image source={require('../../assets/images/Pilule.png')} style={styles.heroImage} resizeMode="contain" />
+        <View style={styles.backRow}>
+          <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+        </View>
+        <View style={styles.logoFrame}>
+          <Image
+            source={require('../../assets/images/Master_MediClock_seul_V.1.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
+        <View style={styles.heroFrame}>
+          <Image source={require('../../assets/images/Pilule.png')} style={styles.heroImage} resizeMode="contain" />
+        </View>
         <MCText variant="h1">Traitements</MCText>
       </View>
 
@@ -352,10 +366,28 @@ const styles = StyleSheet.create({
   header: {
     marginVertical: Spacing.sm,
   },
+  backRow: {
+    marginBottom: Spacing.sm,
+  },
+  logoFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: Spacing.sm,
+  },
+  logo: {
+    width: 120,
+    height: 40,
+  },
+  heroFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: Spacing.sm,
+  },
   heroImage: {
     width: '100%',
     height: 140,
-    marginBottom: Spacing.sm,
   },
   card: {
     padding: Spacing.md,

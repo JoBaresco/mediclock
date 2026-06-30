@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: Spacing.buttonHeight,
-    paddingHorizontal: Spacing.md,
+    paddingHorizontal: 10,
   } as ViewStyle,
   primary: {
     backgroundColor: Colors.mediclockBlue,
@@ -70,15 +70,15 @@ const styles = StyleSheet.create({
   } as ViewStyle,
   sm: {
     height: 40,
-    paddingHorizontal: Spacing.md,
+    paddingHorizontal: 10,
   } as ViewStyle,
   md: {
     height: 54,
-    paddingHorizontal: Spacing.lg,
+    paddingHorizontal: 10,
   } as ViewStyle,
   lg: {
     height: 60,
-    paddingHorizontal: Spacing.xl,
+    paddingHorizontal: 10,
   } as ViewStyle,
   fullWidth: {
     width: '100%',
@@ -86,7 +86,10 @@ const styles = StyleSheet.create({
   disabled: {
     opacity: 0.5,
   } as ViewStyle,
-  label: {} as TextStyle,
+  label: {
+    fontSize: 14,
+    lineHeight: 18,
+  } as TextStyle,
   primaryLabel: {
     color: Colors.textInverse,
   } as TextStyle,

@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
 import { Colors, Typography } from '../../theme';
@@ -9,8 +10,13 @@ type Step5MyCircleProps = {
 };
 
 export function Step5MyCircle({ onContinue, onSkip }: Step5MyCircleProps) {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
+      <View style={styles.headerRow}>
+        <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+      </View>
       <MCText style={styles.step}>Étape 5/6</MCText>
       <MCText style={styles.title}>Invitez votre cercle de confiance</MCText>
       <MCText style={styles.subtitle}>
@@ -38,6 +44,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 72,
     paddingBottom: 32,
+  },
+  headerRow: {
+    marginBottom: 12,
   },
   step: {
     color: Colors.primary,

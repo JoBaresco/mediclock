@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
 import { Colors, Typography } from '../../theme';
@@ -10,8 +11,13 @@ type Step3FirstTreatmentProps = {
 };
 
 export function Step3FirstTreatment({ onSmartCapture, onManual, onSkip }: Step3FirstTreatmentProps) {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
+      <View style={styles.headerRow}>
+        <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+      </View>
       <MCText style={styles.step}>Étape 3/6</MCText>
       <MCText style={styles.title}>Ajoutez votre premier traitement</MCText>
       <MCText style={styles.subtitle}>
@@ -39,6 +45,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 72,
     paddingBottom: 32,
+  },
+  headerRow: {
+    marginBottom: 12,
   },
   step: {
     color: Colors.primary,

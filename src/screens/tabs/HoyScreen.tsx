@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import { MCButton } from '../../components/ui/MCButton';
@@ -30,6 +30,13 @@ export function HoyScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <View style={styles.logoFrame}>
+        <Image
+          source={require('../../../assets/images/Master_MediClock_seul_V.1.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </View>
       <MCText style={styles.kicker}>Aujourd'hui</MCText>
       <MCText style={styles.title}>Bonjour, Jean</MCText>
       <MCText style={styles.subtitle}>{dateText}</MCText>
@@ -117,6 +124,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 20,
     paddingBottom: 120,
+  },
+  logoFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 16,
+  },
+  logo: {
+    width: 120,
+    height: 40,
   },
   kicker: {
     color: '#2F80ED',
