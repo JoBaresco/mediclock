@@ -88,7 +88,7 @@ export const useTreatmentStore = create<TreatmentState>()(
       setHydrated: (value) => set({ hydrated: value }),
     }),
     {
-      name: 'mediclock-treatment-store',
+      name: 'MediClock-treatment-store',
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({
         treatments: state.treatments,

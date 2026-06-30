@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   } as ViewStyle,
   primary: {
-    backgroundColor: Colors.mediclockBlue,
+    backgroundColor: Colors.mediClockBlue,
   } as ViewStyle,
   secondary: {
     backgroundColor: Colors.softBlueSurface,
     borderWidth: 1,
-    borderColor: Colors.mediclockBlue,
+    borderColor: Colors.mediClockBlue,
   } as ViewStyle,
   ghost: {
     backgroundColor: 'transparent',
@@ -94,10 +94,10 @@ const styles = StyleSheet.create({
     color: Colors.textInverse,
   } as TextStyle,
   secondaryLabel: {
-    color: Colors.mediclockBlue,
+    color: Colors.mediClockBlue,
   } as TextStyle,
   ghostLabel: {
-    color: Colors.mediclockBlue,
+    color: Colors.mediClockBlue,
   } as TextStyle,
   dangerLabel: {
     color: Colors.textInverse,

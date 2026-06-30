@@ -59,7 +59,7 @@ export const useAppointmentStore = create<AppointmentState>()(
       setHydrated: (value) => set({ hydrated: value }),
     }),
     {
-      name: 'mediclock-appointment-store',
+      name: 'MediClock-appointment-store',
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({
         appointments: state.appointments,

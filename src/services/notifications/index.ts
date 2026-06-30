@@ -12,7 +12,7 @@ if (Platform.OS !== 'web') {
   });
 }
 
-const CHANNEL_ID = 'mediclock-reminders';
+const CHANNEL_ID = 'MediClock-reminders';
 
 export const LocalNotificationService = {
   requestPermissions: async (): Promise<boolean> => {

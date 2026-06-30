@@ -10,7 +10,7 @@ export const Colors = {
   error: '#E85C5C',
 
   // Compatibility aliases used by existing UI components.
-  mediclockBlue: '#2F80ED',
+  mediClockBlue: '#2F80ED',
   warmWhite: '#FAFBFC',
   deepNavy: '#102033',
   serenityGreen: '#2FBF71',

@@ -13,7 +13,7 @@ interface MCStatusCardProps {
 
 const statusConfig: Record<StatusType, { color: string; bg: string }> = {
   all_good: { color: Colors.serenityGreen, bg: '#F0FBF5' },
-  action_pending: { color: Colors.mediclockBlue, bg: Colors.softBlueSurface },
+  action_pending: { color: Colors.mediClockBlue, bg: Colors.softBlueSurface },
   attention_required: { color: Colors.softWarning, bg: '#FFF8EC' },
   no_treatments: { color: Colors.calmGray, bg: Colors.softBlueSurface },
 };
