@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Alert, Platform, View, StyleSheet, ScrollView } from 'react-native';
+import { Alert, Image, Platform, View, StyleSheet, ScrollView } from 'react-native';
 import { MCText } from '../../src/components/ui/MCText';
 import { MCCard } from '../../src/components/ui/MCCard';
 import { MCButton } from '../../src/components/ui/MCButton';
@@ -195,6 +195,7 @@ export default function TreatmentsScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.header}>
+        <Image source={require('../../assets/images/Pilule.png')} style={styles.heroImage} resizeMode="contain" />
         <MCText variant="h1">Traitements</MCText>
       </View>
 
@@ -350,6 +351,11 @@ const styles = StyleSheet.create({
   },
   header: {
     marginVertical: Spacing.sm,
+  },
+  heroImage: {
+    width: '100%',
+    height: 140,
+    marginBottom: Spacing.sm,
   },
   card: {
     padding: Spacing.md,

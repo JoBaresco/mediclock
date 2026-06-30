@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MCButton } from '../components/ui/MCButton';
 import { MCCard } from '../components/ui/MCCard';
@@ -10,6 +10,7 @@ export function SmartCaptureScreen() {
 
   return (
     <View style={styles.container}>
+      <Image source={require('../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
       <MCText style={styles.kicker}>Smart Capture</MCText>
       <MCText style={styles.title}>Capturez. MediClock structure.</MCText>
       <MCText style={styles.subtitle}>
@@ -36,6 +37,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 24,
     paddingBottom: 28,
+  },
+  heroImage: {
+    width: '100%',
+    height: 170,
+    marginBottom: 18,
   },
   kicker: {
     color: Colors.primary,

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCText } from '../../components/ui/MCText';
@@ -9,12 +9,14 @@ export function MySpaceScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <Image source={require('../../../assets/images/Cercle_II.png')} style={styles.heroImage} resizeMode="contain" />
       <MCText style={styles.kicker}>Mon Espace</MCText>
       <MCText style={styles.title}>Paramètres personnels et sécurité.</MCText>
       <MCText style={styles.subtitle}>Pilotez votre cercle et votre protocole d'urgence en un geste.</MCText>
 
       <TouchableOpacity activeOpacity={0.86} onPress={() => router.push('/my-circle')}>
         <MCCard style={styles.card}>
+          <Image source={require('../../../assets/images/Famille_Cercle.png')} style={styles.cardIcon} resizeMode="contain" />
           <MCText style={styles.cardTitle}>Mon Cercle</MCText>
           <MCText style={styles.cardBody}>Invitations, permissions, suivi des proches.</MCText>
         </MCCard>
@@ -22,6 +24,7 @@ export function MySpaceScreen() {
 
       <TouchableOpacity activeOpacity={0.86} onPress={() => router.push('/emergency')}>
         <MCCard style={styles.card}>
+          <Image source={require('../../../assets/images/Urgence.png')} style={styles.cardIcon} resizeMode="contain" />
           <MCText style={styles.cardTitle}>Urgence</MCText>
           <MCText style={styles.cardBody}>Contact prioritaire et actions critiques.</MCText>
         </MCCard>
@@ -39,6 +42,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 24,
     paddingBottom: 120,
+  },
+  heroImage: {
+    width: '100%',
+    height: 170,
+    marginBottom: 18,
   },
   kicker: {
     color: '#2F80ED',
@@ -72,6 +80,11 @@ const styles = StyleSheet.create({
     borderColor: '#EAF0F6',
     backgroundColor: '#FFFFFF',
     padding: 20,
+  },
+  cardIcon: {
+    width: 56,
+    height: 56,
+    marginBottom: 10,
   },
   cardTitle: {
     color: '#102033',

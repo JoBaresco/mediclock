@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
@@ -7,6 +7,7 @@ import { Typography } from '../../theme';
 export function DocumentsScreen() {
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <Image source={require('../../../assets/images/Calendrier.png')} style={styles.heroImage} resizeMode="contain" />
       <MCText style={styles.kicker}>Documents</MCText>
       <MCText style={styles.title}>Vos documents de santé, centralisés.</MCText>
       <MCText style={styles.subtitle}>Ordonnances, comptes rendus, analyses. Tout reste clair et disponible.</MCText>
@@ -32,6 +33,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 24,
     paddingBottom: 120,
+  },
+  heroImage: {
+    width: '100%',
+    height: 170,
+    marginBottom: 18,
   },
   kicker: {
     color: '#2F80ED',
