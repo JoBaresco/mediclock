@@ -4,6 +4,10 @@
     "tagline": "Your health, organized. Your peace of mind, shared.",
     "taglineShort": "Let MediClock think about your health so you can think about your life."
   },
+  "tagline": {
+    "line1": "Life flows on,",
+    "line2": "we take care of the rest."
+  },
   "onboarding": {
     "welcome": {
       "title": "Welcome to MediClock",

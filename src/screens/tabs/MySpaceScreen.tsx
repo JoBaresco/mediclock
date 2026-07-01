@@ -1,12 +1,36 @@
-import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Image, Pressable, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCText } from '../../components/ui/MCText';
-import { Typography } from '../../theme';
+import { Colors, Typography } from '../../theme';
+import { DEFAULT_INACTIVITY_TIMEOUT_MINUTES, INACTIVITY_TIMEOUT_KEY } from '../../hooks/useInactivityTimer';
+
+const INACTIVITY_OPTIONS = [
+  { label: 'Jamais', minutes: 0 },
+  { label: '5 min', minutes: 5 },
+  { label: '15 min', minutes: 15 },
+  { label: '30 min', minutes: 30 },
+];
 
 export function MySpaceScreen() {
   const router = useRouter();
+  const [inactivityMinutes, setInactivityMinutes] = useState(DEFAULT_INACTIVITY_TIMEOUT_MINUTES);
+
+  useEffect(() => {
+    AsyncStorage.getItem(INACTIVITY_TIMEOUT_KEY).then((value) => {
+      if (value != null) {
+        setInactivityMinutes(Number(value));
+      }
+    });
+  }, []);
+
+  const onSelectInactivity = (minutes: number) => {
+    setInactivityMinutes(minutes);
+    void AsyncStorage.setItem(INACTIVITY_TIMEOUT_KEY, String(minutes));
+  };
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
@@ -37,6 +61,29 @@ export function MySpaceScreen() {
           <MCText style={styles.cardBody}>Contact prioritaire et actions critiques.</MCText>
         </MCCard>
       </TouchableOpacity>
+
+      <MCCard style={styles.card}>
+        <MCText style={styles.cardTitle}>Verrouillage automatique</MCText>
+        <MCText style={styles.cardBody}>
+          Réaffiche l'écran d'accueil après une période d'inactivité sur l'écran Aujourd'hui.
+        </MCText>
+        <View style={styles.optionsRow}>
+          {INACTIVITY_OPTIONS.map((option) => {
+            const isActive = option.minutes === inactivityMinutes;
+            return (
+              <Pressable
+                key={option.label}
+                style={[styles.optionPill, isActive && styles.optionPillActive]}
+                onPress={() => onSelectInactivity(option.minutes)}
+              >
+                <MCText style={isActive ? [styles.optionLabel, styles.optionLabelActive] : styles.optionLabel}>
+                  {option.label}
+                </MCText>
+              </Pressable>
+            );
+          })}
+        </View>
+      </MCCard>
     </ScrollView>
   );
 }
@@ -120,5 +167,32 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 21,
     opacity: 0.85,
+  },
+  optionsRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 14,
+  },
+  optionPill: {
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: '#E5E9F0',
+    backgroundColor: '#F1F7FF',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+  },
+  optionPillActive: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
+  },
+  optionLabel: {
+    color: '#102033',
+    fontFamily: Typography.fonts.title,
+    fontWeight: '700',
+    fontSize: 13,
+  },
+  optionLabelActive: {
+    color: '#FFFFFF',
   },
 });

@@ -35,6 +35,8 @@ export const Images = {
   // ─── Images narratives / onboarding ───────────────────────────────────────
   pontMediclock: require('../../assets/images/pont_mediclock.png'),
   silhouetteBoutChemin: require('../../assets/images/silhoutte_bout_chemin_II.png'),
+  screenSplash1: require('../../assets/images/screensplash_1.png'),
+  step6ReadyPret: require('../../assets/images/step6ready_pret.png'),
 } as const;
 
 export type ImageKey = keyof typeof Images;

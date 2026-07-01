@@ -1,5 +1,5 @@
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useIsFocused, useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCButton } from '../../components/ui/MCButton';
@@ -8,9 +8,15 @@ import { MCText } from '../../components/ui/MCText';
 import { Typography } from '../../theme';
 import { useAppointmentStore } from '../../store/useAppointmentStore';
 import { useTreatmentStore } from '../../store/useTreatmentStore';
+import { useInactivityTimer } from '../../hooks/useInactivityTimer';
 
 export function HoyScreen() {
   const router = useRouter();
+  const isFocused = useIsFocused();
+  const { registerActivity } = useInactivityTimer({
+    enabled: isFocused,
+    onTimeout: () => router.push('/splash?from=lock'),
+  });
   const allTreatments = useTreatmentStore((state) => state.treatments);
   const treatments = useMemo(
     () => allTreatments.filter((item) => item.status === 'active'),
@@ -30,7 +36,16 @@ export function HoyScreen() {
   });
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.content}
+      onTouchStart={registerActivity}
+      onScrollBeginDrag={registerActivity}
+      onScroll={registerActivity}
+      scrollEventThrottle={1000}
+      // @ts-expect-error onMouseDown is forwarded to the DOM node by react-native-web for mouse input on web builds
+      onMouseDown={registerActivity}
+    >
       <AppHeaderLogo />
       <MCText style={styles.kicker}>Aujourd'hui</MCText>
       <MCText style={styles.title}>Bonjour, Jean</MCText>

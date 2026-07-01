@@ -4,6 +4,10 @@
     "tagline": "La santé. À l'heure qui compte pour vous.",
     "taglineShort": "Laissez MediClock penser à votre santé pour que vous puissiez penser à votre vie."
   },
+  "tagline": {
+    "line1": "La vie suit son cours,",
+    "line2": "on s'occupe du reste."
+  },
   "splash": {
     "message": "Laissez MediClock penser à votre santé\npour que vous puissiez penser à votre vie."
   },
