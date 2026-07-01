@@ -20,7 +20,7 @@ export function Step6Ready({ onFinish }: Step6ReadyProps) {
     >
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <View style={styles.content}>
-          <MCText style={styles.title}>Tout est prêt !</MCText>
+          <MCText style={styles.title}>{t('onboarding.step6.title')}</MCText>
           <Text style={styles.tagline}>
             <Text style={styles.taglineRegular}>{t('tagline.line1')}{'\n'}</Text>
             <Text style={styles.taglineAccent}>{t('tagline.line2')}</Text>
@@ -28,7 +28,7 @@ export function Step6Ready({ onFinish }: Step6ReadyProps) {
         </View>
 
         <View style={styles.actions}>
-          <MCButton label="Entrer dans MediClock" onPress={onFinish} style={styles.primaryButton} />
+          <MCButton label={t('onboarding.step6.cta')} onPress={onFinish} style={styles.primaryButton} />
         </View>
       </SafeAreaView>
     </ImageBackground>

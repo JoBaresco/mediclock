@@ -19,6 +19,7 @@ export const useInactivityTimer = ({ enabled, onTimeout }: UseInactivityTimerOpt
   const isInputActiveRef = useRef(false);
   const enabledRef = useRef(enabled);
   const onTimeoutRef = useRef(onTimeout);
+  const isMountedRef = useRef(true);
 
   enabledRef.current = enabled;
   onTimeoutRef.current = onTimeout;
@@ -37,6 +38,9 @@ export const useInactivityTimer = ({ enabled, onTimeout }: UseInactivityTimerOpt
     }
 
     const stored = await AsyncStorage.getItem(INACTIVITY_TIMEOUT_KEY);
+    if (!isMountedRef.current) {
+      return;
+    }
     const minutes = stored != null ? Number(stored) : DEFAULT_INACTIVITY_TIMEOUT_MINUTES;
 
     if (!minutes || minutes <= 0) {
@@ -44,7 +48,9 @@ export const useInactivityTimer = ({ enabled, onTimeout }: UseInactivityTimerOpt
     }
 
     timeoutRef.current = setTimeout(() => {
-      onTimeoutRef.current();
+      if (isMountedRef.current) {
+        onTimeoutRef.current();
+      }
     }, minutes * 60 * 1000);
   }, [clear]);
 
@@ -65,8 +71,12 @@ export const useInactivityTimer = ({ enabled, onTimeout }: UseInactivityTimerOpt
   );
 
   useEffect(() => {
+    isMountedRef.current = true;
     void schedule();
-    return clear;
+    return () => {
+      isMountedRef.current = false;
+      clear();
+    };
   }, [enabled, schedule, clear]);
 
   return { registerActivity, setInputActive };

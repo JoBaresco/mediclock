@@ -3,6 +3,7 @@
     "name": "MediClock",
     "slug": "mediclock",
     "version": "1.0.0",
+    "scheme": "mediclock",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

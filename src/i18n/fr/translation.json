@@ -12,44 +12,77 @@
     "message": "Laissez MediClock penser à votre santé\npour que vous puissiez penser à votre vie."
   },
   "onboarding": {
-    "welcome": {
-      "title": "Bienvenue sur MediClock",
-      "subtitle": "Laissez MediClock penser à votre santé pour que vous puissiez penser à votre vie.",
-      "cta": "Commencer"
+    "optionalStepBadge": "Étape optionnelle — vous pouvez la passer",
+    "step1": {
+      "title": "Bienvenue dans",
+      "subtitle": "Votre compagnon santé au quotidien.",
+      "cta": "Commencer",
+      "features": {
+        "reminders": {
+          "title": "Rappels intelligents",
+          "subtitle": "Ne manquez plus aucun traitement"
+        },
+        "tracking": {
+          "title": "Suivi simplifié",
+          "subtitle": "Votre santé organisée en quelques secondes"
+        },
+        "circle": {
+          "title": "Mon Cercle",
+          "subtitle": "Partagez avec vos proches en toute sécurité"
+        }
+      }
     },
-    "createSpace": {
+    "step2": {
       "title": "Votre espace personnel",
-      "subtitle": "Ce sera votre espace au sein de MediClock.",
-      "namePlaceholder": "Votre prénom",
-      "dobLabel": "Date de naissance (optionnel)",
-      "genderLabel": "Genre (optionnel)",
+      "subtitle": "Seul le prénom est obligatoire. Le reste peut attendre.",
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "dobLabel": "Date de naissance",
+      "dobPlaceholder": "jj / mm / aaaa",
+      "genderLabel": "Je suis",
       "genderMale": "Homme",
       "genderFemale": "Femme",
+      "noteBefore": "Modifiable à tout moment depuis",
       "cta": "Continuer",
       "skip": "Passer pour l'instant"
     },
-    "firstTreatment": {
-      "title": "Ajoutez votre premier traitement",
+    "step3": {
+      "title": "Ajoutons votre premier",
+      "titleAccent": "médicament",
       "subtitle": "La façon la plus rapide est de scanner la boîte de votre médicament.",
-      "ctaScan": "Scanner une boîte",
-      "ctaManual": "Ajouter manuellement",
+      "scanHint": "Pointez la caméra vers le QR code\nou le code-barres de la boîte",
       "skip": "Passer pour l'instant"
     },
-    "firstAppointment": {
-      "title": "Ajoutez votre prochain rendez-vous (optionnel)",
-      "subtitle": "Nous vous aiderons à être préparé et à l'heure.",
-      "cta": "Continuer",
+    "step4": {
+      "title": "Ajoutons une",
+      "titleAccent": "consultation",
+      "subtitle": "Ainsi nous vous aiderons à être préparé et à l'heure.",
+      "specialtyLabel": "Spécialité",
+      "specialtyValue": "Cardiologie",
+      "dateLabel": "Date",
+      "dateSample": "15/07/2026",
+      "timeLabel": "Heure",
+      "timeSample": "10:00",
+      "doctorLabel": "Médecin",
+      "doctorPlaceholder": "Dr. Nom du médecin",
+      "locationLabel": "Lieu",
+      "locationPlaceholder": "Cabinet, hôpital...",
       "skip": "Passer cette étape"
     },
-    "myCircle": {
-      "title": "Votre cercle de confiance (optionnel)",
-      "subtitle": "Invitez une personne de confiance pour qu'elle soit informée et puisse vous aider.",
+    "step5": {
+      "title": "Votre cercle de",
+      "titleAccent": "confiance",
+      "subtitle": "Invitez un proche de confiance pour qu'il soit informé et puisse vous aider si besoin.",
+      "pillars": {
+        "choose": { "lead": "Vous décidez", "rest": " qui entre dans votre cercle" },
+        "visibility": { "lead": "Vous choisissez", "rest": " ce qu'ils peuvent voir" },
+        "control": { "lead": "Vous restez", "rest": " toujours maître de votre santé" }
+      },
       "cta": "Inviter quelqu'un",
       "skip": "Je le ferai plus tard"
     },
-    "ready": {
+    "step6": {
       "title": "Tout est prêt !",
-      "subtitle": "Nous avons préparé votre espace. Vous pouvez commencer à prendre soin de votre santé en toute tranquillité.",
       "cta": "Entrer dans MediClock"
     }
   },
@@ -74,6 +107,22 @@
     "importantInfo": "Information importante",
     "markDone": "Je l'ai pris",
     "addTreatment": "Ajouter un traitement",
+    "openSmartCapture": "Ouvrir Smart Capture",
+    "treatmentCard": {
+      "markTaken": "Pris",
+      "takenAt": "Pris le {{date}}",
+      "notTakenYet": "Pas encore pris aujourd'hui"
+    },
+    "noLocationSpecified": "Lieu non précisé",
+    "appointmentDone": "Effectué",
+    "markAppointmentDone": "Marquer effectué",
+    "noAppointmentPlanned": "Aucun rendez-vous planifié.",
+    "addAppointment": "Ajouter rendez-vous",
+    "demoAppointment": {
+      "title": "Cardiologue",
+      "location": "Cabinet médical",
+      "doctorName": "Dr Martin"
+    },
     "contextual": {
       "hydration": "Pensez à bien vous hydrater aujourd'hui.",
       "stockLow": "Votre stock de {{name}} est faible. Pensez au renouvellement.",
@@ -89,6 +138,28 @@
     "manual": "Ajouter manuellement",
     "empty": "Aucun traitement actif.",
     "emptyHint": "Ajoutez votre premier traitement pour commencer.",
+    "editMedication": "Éditer",
+    "enableNotifications": "Activer les notifications",
+    "addMedication": {
+      "title": "Ajouter un médicament",
+      "namePlaceholder": "Nom",
+      "dosagePlaceholder": "Dosage",
+      "dosageDefault": "1 comprimé",
+      "timePlaceholder": "Heure (HH:MM)",
+      "everyXDaysPlaceholder": "Tous les X jours (ex: 2)",
+      "cta": "Ajouter"
+    },
+    "deleteConfirm": {
+      "title": "Confirmation",
+      "message": "Supprimer ce médicament ? Cette action est irréversible."
+    },
+    "historyView": {
+      "title": "Historique des prises",
+      "dayFilter": "Jour",
+      "weekFilter": "Semaine",
+      "empty": "Aucune prise enregistrée pour ce filtre.",
+      "unknownMedication": "Médicament"
+    },
     "frequencyLabels": {
       "daily": "Quotidien",
       "weekly": "Hebdo",
@@ -125,6 +196,10 @@
     "import": "Importer",
     "empty": "Aucun document enregistré.",
     "emptyHint": "Gardez vos documents médicaux en sécurité ici.",
+    "heroTitle": "Vos documents de santé, centralisés.",
+    "heroSubtitle": "Ordonnances, comptes rendus, analyses. Tout reste clair et disponible.",
+    "emptyTitle": "Aucun document pour le moment",
+    "emptyBody": "Ajoutez un document pour commencer votre historique médical.",
     "categories": {
       "prescription": "Ordonnance",
       "analysis": "Analyse",
@@ -145,6 +220,7 @@
   },
   "mySpace": {
     "title": "Mon espace",
+    "kicker": "Mon Espace",
     "healthProfile": "Profil santé",
     "myCircle": "Mon cercle",
     "emergency": "Urgence",
@@ -153,7 +229,35 @@
     "backup": "Sauvegarde",
     "subscription": "MediClock Plus",
     "professionals": "Mes professionnels",
-    "privacy": "Confidentialité"
+    "privacy": "Confidentialité",
+    "heroTitle": "Paramètres personnels et sécurité.",
+    "heroSubtitle": "Pilotez votre cercle et votre protocole d'urgence en un geste.",
+    "circleCard": {
+      "title": "Mon Cercle",
+      "body": "Invitations, permissions, suivi des proches."
+    },
+    "emergencyCard": {
+      "body": "Contact prioritaire et actions critiques."
+    },
+    "personalInfo": {
+      "title": "Informations personnelles",
+      "body": "Facultatif, mais utile en cas d'urgence. Modifiable à tout moment.",
+      "bloodGroupLabel": "Groupe sanguin",
+      "heightLabel": "Taille (cm)",
+      "heightPlaceholder": "Ex: 175",
+      "weightLabel": "Poids (kg)",
+      "weightPlaceholder": "Ex: 70"
+    },
+    "autoLock": {
+      "title": "Verrouillage automatique",
+      "body": "Réaffiche l'écran d'accueil après une période d'inactivité sur l'écran Aujourd'hui.",
+      "options": {
+        "never": "Jamais",
+        "five": "5 min",
+        "fifteen": "15 min",
+        "thirty": "30 min"
+      }
+    }
   },
   "emergency": {
     "title": "Urgence",
@@ -227,6 +331,7 @@
   "common": {
     "continue": "Continuer",
     "skip": "Passer",
+    "skipForNow": "Passer pour l'instant",
     "save": "Enregistrer",
     "cancel": "Annuler",
     "delete": "Supprimer",
@@ -236,6 +341,9 @@
     "no": "Non",
     "ok": "D'accord",
     "loading": "Chargement...",
-    "optional": "optionnel"
+    "optional": "optionnel",
+    "optionalSuffix": "— optionnel",
+    "back": "Retour",
+    "or": "ou"
   }
 }

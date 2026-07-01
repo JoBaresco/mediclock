@@ -4,9 +4,10 @@ import Svg, { Circle, Line, Path, Rect } from 'react-native-svg';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCInput } from '../../components/ui/MCInput';
 import { MCText } from '../../components/ui/MCText';
-import { OnboardingHeader } from '../../components/ui/OnboardingHeader';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { OnboardingProgress } from '../../components/ui/OnboardingProgress';
 import { Colors, Typography } from '../../theme';
+import { useTranslation } from '../../hooks/useTranslation';
 
 type Step4FirstAppointmentProps = {
   onContinue: () => void;
@@ -14,26 +15,28 @@ type Step4FirstAppointmentProps = {
 };
 
 export function Step4FirstAppointment({ onContinue, onSkip }: Step4FirstAppointmentProps) {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <OnboardingHeader />
+        <AppHeaderLogo />
         <OnboardingProgress total={6} activeIndex={3} activeColor={Colors.primary} />
 
         <View style={styles.optionalBadge}>
-          <MCText style={styles.optionalBadgeText}>Étape optionnelle — vous pouvez la passer</MCText>
+          <MCText style={styles.optionalBadgeText}>{t('onboarding.optionalStepBadge')}</MCText>
         </View>
 
         <MCText style={styles.title}>
-          Ajoutons une <MCText style={styles.titleAccent}>consultation</MCText>
+          {t('onboarding.step4.title')} <MCText style={styles.titleAccent}>{t('onboarding.step4.titleAccent')}</MCText>
         </MCText>
-        <MCText style={styles.subtitle}>Ainsi nous vous aiderons à être préparé et à l'heure.</MCText>
+        <MCText style={styles.subtitle}>{t('onboarding.step4.subtitle')}</MCText>
 
         <View style={styles.form}>
           <View style={styles.field}>
-            <MCText style={styles.label}>Spécialité</MCText>
+            <MCText style={styles.label}>{t('onboarding.step4.specialtyLabel')}</MCText>
             <Pressable style={styles.inputRowActive}>
-              <MCText style={styles.inputValue}>Cardiologie</MCText>
+              <MCText style={styles.inputValue}>{t('onboarding.step4.specialtyValue')}</MCText>
               <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
                 <Path d="M6 9l6 6 6-6" stroke={Colors.muted} strokeWidth={2} strokeLinecap="round" />
               </Svg>
@@ -42,9 +45,9 @@ export function Step4FirstAppointment({ onContinue, onSkip }: Step4FirstAppointm
 
           <View style={styles.row}>
             <View style={[styles.field, styles.rowItem]}>
-              <MCText style={styles.label}>Date</MCText>
+              <MCText style={styles.label}>{t('onboarding.step4.dateLabel')}</MCText>
               <Pressable style={styles.inputRow}>
-                <MCText style={styles.inputValueSmall}>15/07/2026</MCText>
+                <MCText style={styles.inputValueSmall}>{t('onboarding.step4.dateSample')}</MCText>
                 <Svg width={14} height={14} viewBox="0 0 24 24" fill="none">
                   <Rect x={3} y={4} width={18} height={18} rx={3} stroke="#9CA3AF" strokeWidth={2} />
                   <Line x1={3} y1={9} x2={21} y2={9} stroke="#9CA3AF" strokeWidth={2} />
@@ -54,9 +57,9 @@ export function Step4FirstAppointment({ onContinue, onSkip }: Step4FirstAppointm
               </Pressable>
             </View>
             <View style={[styles.field, styles.rowItem]}>
-              <MCText style={styles.label}>Heure</MCText>
+              <MCText style={styles.label}>{t('onboarding.step4.timeLabel')}</MCText>
               <Pressable style={styles.inputRow}>
-                <MCText style={styles.inputValueSmall}>10:00</MCText>
+                <MCText style={styles.inputValueSmall}>{t('onboarding.step4.timeSample')}</MCText>
                 <Svg width={14} height={14} viewBox="0 0 24 24" fill="none">
                   <Circle cx={12} cy={12} r={9} stroke="#9CA3AF" strokeWidth={2} />
                   <Line x1={12} y1={7} x2={12} y2={12} stroke="#9CA3AF" strokeWidth={2} strokeLinecap="round" />
@@ -68,23 +71,23 @@ export function Step4FirstAppointment({ onContinue, onSkip }: Step4FirstAppointm
 
           <View style={styles.field}>
             <MCText style={styles.label}>
-              Médecin <MCText style={styles.optional}>— optionnel</MCText>
+              {t('onboarding.step4.doctorLabel')} <MCText style={styles.optional}>{t('common.optionalSuffix')}</MCText>
             </MCText>
-            <MCInput placeholder="Dr. Nom du médecin" />
+            <MCInput placeholder={t('onboarding.step4.doctorPlaceholder')} />
           </View>
 
           <View style={styles.field}>
             <MCText style={styles.label}>
-              Lieu <MCText style={styles.optional}>— optionnel</MCText>
+              {t('onboarding.step4.locationLabel')} <MCText style={styles.optional}>{t('common.optionalSuffix')}</MCText>
             </MCText>
-            <MCInput placeholder="Cabinet, hôpital..." />
+            <MCInput placeholder={t('onboarding.step4.locationPlaceholder')} />
           </View>
         </View>
 
         <View style={styles.actions}>
-          <MCButton label="Continuer" onPress={onContinue} style={styles.primaryButton} />
+          <MCButton label={t('common.continue')} onPress={onContinue} style={styles.primaryButton} />
           <Pressable style={styles.skipButton} onPress={onSkip}>
-            <MCText style={styles.skipLabel}>Passer cette étape</MCText>
+            <MCText style={styles.skipLabel}>{t('onboarding.step4.skip')}</MCText>
           </Pressable>
         </View>
       </ScrollView>

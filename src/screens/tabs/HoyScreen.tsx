@@ -1,18 +1,22 @@
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useIsFocused, useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCText } from '../../components/ui/MCText';
+import { TabScreenScrollView } from '../../components/ui/TabScreenScrollView';
 import { Typography } from '../../theme';
 import { useAppointmentStore } from '../../store/useAppointmentStore';
 import { useTreatmentStore } from '../../store/useTreatmentStore';
 import { useInactivityTimer } from '../../hooks/useInactivityTimer';
+import { useTranslation } from '../../hooks/useTranslation';
+import { getBcp47Locale } from '../../i18n/dateLocale';
 
 export function HoyScreen() {
   const router = useRouter();
   const isFocused = useIsFocused();
+  const { t, i18n } = useTranslation();
   const { registerActivity } = useInactivityTimer({
     enabled: isFocused,
     onTimeout: () => router.push('/splash?from=lock'),
@@ -28,15 +32,16 @@ export function HoyScreen() {
   const markAppointmentCompleted = useAppointmentStore((state) => state.markAppointmentCompleted);
 
   const nextAppointment = appointments.find((item) => !item.isCompleted) ?? null;
+  const locale = getBcp47Locale(i18n.language);
 
-  const dateText = new Date().toLocaleDateString('fr-FR', {
+  const dateText = new Date().toLocaleDateString(locale, {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
   });
 
   return (
-    <ScrollView
+    <TabScreenScrollView
       style={styles.container}
       contentContainerStyle={styles.content}
       onTouchStart={registerActivity}
@@ -47,13 +52,13 @@ export function HoyScreen() {
       onMouseDown={registerActivity}
     >
       <AppHeaderLogo />
-      <MCText style={styles.kicker}>Aujourd'hui</MCText>
-      <MCText style={styles.title}>Bonjour, Jean</MCText>
+      <MCText style={styles.kicker}>{t('today.title')}</MCText>
+      <MCText style={styles.title}>{t('today.greeting', { name: 'Jean' })}</MCText>
       <MCText style={styles.subtitle}>{dateText}</MCText>
 
       <MCCard style={styles.statusCard}>
-        <MCText style={styles.statusTitle}>Tout est sous contrôle</MCText>
-        <MCText style={styles.statusBody}>Aucune action importante pour le moment.</MCText>
+        <MCText style={styles.statusTitle}>{t('today.status.allGood')}</MCText>
+        <MCText style={styles.statusBody}>{t('today.status.allGoodSub')}</MCText>
       </MCCard>
 
       {treatments.map((treatment) => (
@@ -64,17 +69,22 @@ export function HoyScreen() {
           </MCText>
           <MCText style={styles.caption}>
             {treatment.lastTakenAt
-              ? `Pris le ${new Date(treatment.lastTakenAt).toLocaleString('fr-FR')}`
-              : "Pas encore pris aujourd'hui"}
+              ? t('today.treatmentCard.takenAt', { date: new Date(treatment.lastTakenAt).toLocaleString(locale) })
+              : t('today.treatmentCard.notTakenYet')}
           </MCText>
           <View style={styles.inlineAction}>
-            <MCButton label="Pris" size="sm" fullWidth={false} onPress={() => markTreatmentTaken(treatment.id)} />
+            <MCButton
+              label={t('today.treatmentCard.markTaken')}
+              size="sm"
+              fullWidth={false}
+              onPress={() => markTreatmentTaken(treatment.id)}
+            />
           </View>
         </MCCard>
       ))}
 
       <View style={styles.actions}>
-        <MCButton label="Ouvrir Smart Capture" onPress={() => router.push('/smart-capture')} />
+        <MCButton label={t('today.openSmartCapture')} onPress={() => router.push('/smart-capture')} />
       </View>
 
       <MCCard style={styles.sectionCard}>
@@ -82,19 +92,19 @@ export function HoyScreen() {
           <View style={styles.sectionIconFrame}>
             <Image source={require('../../../assets/images/Calendrier.png')} style={styles.sectionIcon} resizeMode="contain" />
           </View>
-          <MCText style={styles.sectionLabel}>Prochain rendez-vous</MCText>
+          <MCText style={styles.sectionLabel}>{t('today.nextAppointment')}</MCText>
         </View>
         {nextAppointment ? (
           <>
             <MCText style={styles.sectionValue}>
-              {new Date(nextAppointment.date).toLocaleDateString('fr-FR')} - {nextAppointment.title}
+              {new Date(nextAppointment.date).toLocaleDateString(locale)} - {nextAppointment.title}
             </MCText>
             <MCText style={styles.caption}>
-              {nextAppointment.location ?? 'Lieu non précisé'}
+              {nextAppointment.location ?? t('today.noLocationSpecified')}
             </MCText>
             <View style={styles.inlineAction}>
               <MCButton
-                label={nextAppointment.isCompleted ? 'Effectué' : 'Marquer effectué'}
+                label={nextAppointment.isCompleted ? t('today.appointmentDone') : t('today.markAppointmentDone')}
                 size="sm"
                 variant={nextAppointment.isCompleted ? 'secondary' : 'primary'}
                 fullWidth={false}
@@ -105,18 +115,18 @@ export function HoyScreen() {
           </>
         ) : (
           <>
-            <MCText style={styles.sectionValue}>Aucun rendez-vous planifié.</MCText>
+            <MCText style={styles.sectionValue}>{t('today.noAppointmentPlanned')}</MCText>
             <View style={styles.inlineAction}>
               <MCButton
-                label="Ajouter rendez-vous"
+                label={t('today.addAppointment')}
                 size="sm"
                 fullWidth={false}
                 onPress={() =>
                   addAppointment({
-                    title: 'Cardiologue',
+                    title: t('today.demoAppointment.title'),
                     date: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-                    location: 'Cabinet médical',
-                    doctorName: 'Dr Martin',
+                    location: t('today.demoAppointment.location'),
+                    doctorName: t('today.demoAppointment.doctorName'),
                     notes: '',
                     isCompleted: false,
                   })
@@ -126,7 +136,7 @@ export function HoyScreen() {
           </>
         )}
       </MCCard>
-    </ScrollView>
+    </TabScreenScrollView>
   );
 }
 
@@ -138,7 +148,6 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 24,
     paddingTop: 20,
-    paddingBottom: 120,
   },
   kicker: {
     color: '#2F80ED',

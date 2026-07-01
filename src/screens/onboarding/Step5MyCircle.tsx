@@ -3,45 +3,48 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
-import { OnboardingHeader } from '../../components/ui/OnboardingHeader';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { OnboardingProgress } from '../../components/ui/OnboardingProgress';
 import { Colors, Typography } from '../../theme';
+import { useTranslation } from '../../hooks/useTranslation';
 
 type Step5MyCircleProps = {
   onContinue: () => void;
   onSkip: () => void;
 };
 
-const PILLARS = [
-  {
-    color: Colors.primary,
-    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
-    boldLead: 'Vous décidez',
-    rest: ' qui entre dans votre cercle',
-  },
-  {
-    color: Colors.success,
-    icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
-    boldLead: 'Vous choisissez',
-    rest: ' ce qu\'ils peuvent voir',
-  },
-  {
-    color: Colors.warning,
-    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
-    boldLead: 'Vous restez',
-    rest: ' toujours maître de votre santé',
-  },
-];
-
 export function Step5MyCircle({ onContinue, onSkip }: Step5MyCircleProps) {
+  const { t } = useTranslation();
+
+  const PILLARS = [
+    {
+      color: Colors.primary,
+      icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+      boldLead: t('onboarding.step5.pillars.choose.lead'),
+      rest: t('onboarding.step5.pillars.choose.rest'),
+    },
+    {
+      color: Colors.success,
+      icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+      boldLead: t('onboarding.step5.pillars.visibility.lead'),
+      rest: t('onboarding.step5.pillars.visibility.rest'),
+    },
+    {
+      color: Colors.warning,
+      icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+      boldLead: t('onboarding.step5.pillars.control.lead'),
+      rest: t('onboarding.step5.pillars.control.rest'),
+    },
+  ];
+
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <OnboardingHeader />
+        <AppHeaderLogo />
         <OnboardingProgress total={6} activeIndex={4} activeColor={Colors.primary} />
 
         <View style={styles.optionalBadge}>
-          <MCText style={styles.optionalBadgeText}>Étape optionnelle — vous pouvez la passer</MCText>
+          <MCText style={styles.optionalBadgeText}>{t('onboarding.optionalStepBadge')}</MCText>
         </View>
 
         <View style={styles.iconBox}>
@@ -60,11 +63,9 @@ export function Step5MyCircle({ onContinue, onSkip }: Step5MyCircleProps) {
         </View>
 
         <MCText style={styles.title}>
-          Votre cercle de <MCText style={styles.titleAccent}>confiance</MCText>
+          {t('onboarding.step5.title')} <MCText style={styles.titleAccent}>{t('onboarding.step5.titleAccent')}</MCText>
         </MCText>
-        <MCText style={styles.subtitle}>
-          Invitez un proche de confiance pour qu'il soit informé et puisse vous aider si besoin.
-        </MCText>
+        <MCText style={styles.subtitle}>{t('onboarding.step5.subtitle')}</MCText>
 
         <View style={styles.pillarList}>
           {PILLARS.map((pillar) => (
@@ -83,9 +84,9 @@ export function Step5MyCircle({ onContinue, onSkip }: Step5MyCircleProps) {
         </View>
 
         <View style={styles.actions}>
-          <MCButton label="Inviter quelqu'un" onPress={onContinue} style={styles.primaryButton} />
+          <MCButton label={t('onboarding.step5.cta')} onPress={onContinue} style={styles.primaryButton} />
           <Pressable style={styles.skipButton} onPress={onSkip}>
-            <MCText style={styles.skipLabel}>Je le ferai plus tard</MCText>
+            <MCText style={styles.skipLabel}>{t('onboarding.step5.skip')}</MCText>
           </Pressable>
         </View>
       </ScrollView>

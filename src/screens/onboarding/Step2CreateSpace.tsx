@@ -5,9 +5,10 @@ import Svg, { Circle, Line, Rect } from 'react-native-svg';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCInput } from '../../components/ui/MCInput';
 import { MCText } from '../../components/ui/MCText';
-import { OnboardingHeader } from '../../components/ui/OnboardingHeader';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { OnboardingProgress } from '../../components/ui/OnboardingProgress';
 import { Colors, Typography } from '../../theme';
+import { useTranslation } from '../../hooks/useTranslation';
 
 type Step2CreateSpaceProps = {
   onContinue: () => void;
@@ -15,31 +16,32 @@ type Step2CreateSpaceProps = {
 };
 
 export function Step2CreateSpace({ onContinue, onSkip }: Step2CreateSpaceProps) {
+  const { t } = useTranslation();
   const [gender, setGender] = useState<'homme' | 'femme'>('homme');
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <OnboardingHeader />
+        <AppHeaderLogo />
         <OnboardingProgress total={6} activeIndex={1} activeColor={Colors.primary} />
 
-        <MCText style={styles.title}>Votre espace personnel</MCText>
-        <MCText style={styles.subtitle}>Seul le prénom est obligatoire. Le reste peut attendre.</MCText>
+        <MCText style={styles.title}>{t('onboarding.step2.title')}</MCText>
+        <MCText style={styles.subtitle}>{t('onboarding.step2.subtitle')}</MCText>
 
         <View style={styles.form}>
           <View style={styles.field}>
             <MCText style={styles.label}>
-              Prénom <MCText style={styles.required}>*</MCText>
+              {t('onboarding.step2.firstNameLabel')} <MCText style={styles.required}>*</MCText>
             </MCText>
-            <MCInput placeholder="Jean" style={styles.inputActive} />
+            <MCInput placeholder={t('onboarding.step2.firstNamePlaceholder')} style={styles.inputActive} />
           </View>
 
           <View style={styles.field}>
             <MCText style={styles.label}>
-              Date de naissance <MCText style={styles.optional}>— optionnel</MCText>
+              {t('onboarding.step2.dobLabel')} <MCText style={styles.optional}>{t('common.optionalSuffix')}</MCText>
             </MCText>
             <Pressable style={styles.inputRow}>
-              <MCText style={styles.placeholderText}>jj / mm / aaaa</MCText>
+              <MCText style={styles.placeholderText}>{t('onboarding.step2.dobPlaceholder')}</MCText>
               <Svg width={16} height={16} viewBox="0 0 24 24" fill="none">
                 <Rect x={3} y={4} width={18} height={18} rx={3} stroke="#9CA3AF" strokeWidth={2} />
                 <Line x1={3} y1={9} x2={21} y2={9} stroke="#9CA3AF" strokeWidth={2} />
@@ -51,7 +53,7 @@ export function Step2CreateSpace({ onContinue, onSkip }: Step2CreateSpaceProps) 
 
           <View style={styles.field}>
             <MCText style={styles.label}>
-              Je suis <MCText style={styles.optional}>— optionnel</MCText>
+              {t('onboarding.step2.genderLabel')} <MCText style={styles.optional}>{t('common.optionalSuffix')}</MCText>
             </MCText>
             <View style={styles.genderRow}>
               <Pressable
@@ -59,7 +61,7 @@ export function Step2CreateSpace({ onContinue, onSkip }: Step2CreateSpaceProps) 
                 onPress={() => setGender('homme')}
               >
                 <MCText style={gender === 'homme' ? [styles.genderLabel, styles.genderLabelActive] : styles.genderLabel}>
-                  Homme
+                  {t('onboarding.step2.genderMale')}
                 </MCText>
               </Pressable>
               <Pressable
@@ -67,7 +69,7 @@ export function Step2CreateSpace({ onContinue, onSkip }: Step2CreateSpaceProps) 
                 onPress={() => setGender('femme')}
               >
                 <MCText style={gender === 'femme' ? [styles.genderLabel, styles.genderLabelActive] : styles.genderLabel}>
-                  Femme
+                  {t('onboarding.step2.genderFemale')}
                 </MCText>
               </Pressable>
             </View>
@@ -81,13 +83,13 @@ export function Step2CreateSpace({ onContinue, onSkip }: Step2CreateSpaceProps) 
             <Circle cx={12} cy={16} r={1} fill={Colors.primary} />
           </Svg>
           <MCText style={styles.noteText}>
-            Modifiable à tout moment depuis <MCText style={styles.noteLink}>Mon espace</MCText>.
+            {t('onboarding.step2.noteBefore')} <MCText style={styles.noteLink}>{t('mySpace.title')}</MCText>.
           </MCText>
         </View>
 
         <View style={styles.actions}>
-          <MCButton label="Continuer" onPress={onContinue} style={styles.primaryButton} />
-          <MCButton label="Passer pour l'instant" variant="ghost" onPress={onSkip} />
+          <MCButton label={t('onboarding.step2.cta')} onPress={onContinue} style={styles.primaryButton} />
+          <MCButton label={t('onboarding.step2.skip')} variant="ghost" onPress={onSkip} />
         </View>
       </ScrollView>
     </SafeAreaView>

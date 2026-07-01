@@ -1,36 +1,39 @@
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
+import { TabScreenScrollView } from '../../components/ui/TabScreenScrollView';
 import { Typography } from '../../theme';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export function DocumentsScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <TabScreenScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.headerRow}>
-        <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+        <MCButton label={t('common.back')} variant="ghost" fullWidth={false} onPress={() => router.back()} />
       </View>
       <AppHeaderLogo />
       <View style={styles.imageFrame}>
         <Image source={require('../../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
       </View>
-      <MCText style={styles.kicker}>Documents</MCText>
-      <MCText style={styles.title}>Vos documents de santé, centralisés.</MCText>
-      <MCText style={styles.subtitle}>Ordonnances, comptes rendus, analyses. Tout reste clair et disponible.</MCText>
+      <MCText style={styles.kicker}>{t('documents.title')}</MCText>
+      <MCText style={styles.title}>{t('documents.heroTitle')}</MCText>
+      <MCText style={styles.subtitle}>{t('documents.heroSubtitle')}</MCText>
 
       <MCCard style={styles.card}>
-        <MCText style={styles.cardTitle}>Aucun document pour le moment</MCText>
-        <MCText style={styles.cardBody}>Ajoutez un document pour commencer votre historique médical.</MCText>
+        <MCText style={styles.cardTitle}>{t('documents.emptyTitle')}</MCText>
+        <MCText style={styles.cardBody}>{t('documents.emptyBody')}</MCText>
       </MCCard>
 
       <View style={styles.actions}>
-        <MCButton label="Ajouter un document" onPress={() => undefined} />
+        <MCButton label={t('documents.add')} onPress={() => undefined} />
       </View>
-    </ScrollView>
+    </TabScreenScrollView>
   );
 }
 
@@ -42,7 +45,6 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 24,
     paddingTop: 24,
-    paddingBottom: 120,
   },
   headerRow: {
     marginBottom: 12,

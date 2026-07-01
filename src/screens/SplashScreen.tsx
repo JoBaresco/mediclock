@@ -1,4 +1,5 @@
 import { ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from '../hooks/useTranslation';
 
 type SplashScreenProps = {
@@ -7,11 +8,12 @@ type SplashScreenProps = {
 
 export function SplashScreen({ onAnimationComplete }: SplashScreenProps) {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
 
   return (
     <ImageBackground
       source={require('../../assets/images/screensplash_1.png')}
-      style={styles.background}
+      style={[styles.background, { paddingBottom: insets.bottom }]}
       resizeMode="cover"
     >
       <TouchableOpacity style={styles.tapArea} activeOpacity={1} onPress={() => onAnimationComplete?.()}>

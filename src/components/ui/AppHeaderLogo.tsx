@@ -11,10 +11,8 @@ export function AppHeaderLogo() {
 
 const styles = StyleSheet.create({
   frame: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#F1F7FF',
-    borderRadius: 20,
-    padding: 10,
+    width: '100%',
+    alignItems: 'center',
     marginBottom: 16,
   },
   logo: {

@@ -4,33 +4,36 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Typography } from '../../theme';
 import { MCText } from '../../components/ui/MCText';
 import { MCButton } from '../../components/ui/MCButton';
+import { useTranslation } from '../../hooks/useTranslation';
 
 type Step1WelcomeProps = {
   onContinue?: () => void;
 };
 
-const FEATURES = [
-  {
-    color: Colors.primary,
-    title: 'Rappels intelligents',
-    subtitle: 'Ne manquez plus aucun traitement',
-    icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z',
-  },
-  {
-    color: Colors.success,
-    title: 'Suivi simplifié',
-    subtitle: 'Votre santé organisée en quelques secondes',
-    icon: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z',
-  },
-  {
-    color: Colors.warning,
-    title: 'Mon Cercle',
-    subtitle: 'Partagez avec vos proches en toute sécurité',
-    icon: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
-  },
-];
-
 export function Step1Welcome({ onContinue }: Step1WelcomeProps) {
+  const { t } = useTranslation();
+
+  const FEATURES = [
+    {
+      color: Colors.primary,
+      title: t('onboarding.step1.features.reminders.title'),
+      subtitle: t('onboarding.step1.features.reminders.subtitle'),
+      icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z',
+    },
+    {
+      color: Colors.success,
+      title: t('onboarding.step1.features.tracking.title'),
+      subtitle: t('onboarding.step1.features.tracking.subtitle'),
+      icon: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z',
+    },
+    {
+      color: Colors.warning,
+      title: t('onboarding.step1.features.circle.title'),
+      subtitle: t('onboarding.step1.features.circle.subtitle'),
+      icon: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
+    },
+  ];
+
   return (
     <View style={styles.page}>
       <View style={styles.card}>
@@ -42,11 +45,11 @@ export function Step1Welcome({ onContinue }: Step1WelcomeProps) {
               resizeMode="contain"
             />
 
-            <MCText style={styles.title}>Bienvenue dans</MCText>
+            <MCText style={styles.title}>{t('onboarding.step1.title')}</MCText>
 
             <Image source={require('../../../assets/images/mediclock_II.jpeg')} style={styles.wordmark} resizeMode="contain" />
 
-            <MCText style={styles.body}>Votre compagnon santé au quotidien.</MCText>
+            <MCText style={styles.body}>{t('onboarding.step1.subtitle')}</MCText>
 
             <View style={styles.featureList}>
               {FEATURES.map((feature) => (
@@ -64,7 +67,7 @@ export function Step1Welcome({ onContinue }: Step1WelcomeProps) {
               ))}
             </View>
 
-            <MCButton label="Commencer" onPress={() => onContinue?.()} style={styles.button} />
+            <MCButton label={t('onboarding.step1.cta')} onPress={() => onContinue?.()} style={styles.button} />
           </ScrollView>
         </SafeAreaView>
       </View>

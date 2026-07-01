@@ -39,7 +39,14 @@ export const MCButton: React.FC<MCButtonProps> = ({
         style,
       ]}
     >
-      <MCText variant="body" weight="semiBold" style={[styles.label, styles[`${variant}Label`]]}>
+      <MCText
+        variant="body"
+        weight="semiBold"
+        style={[styles.label, styles[`${variant}Label`]]}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.8}
+      >
         {label}
       </MCText>
     </TouchableOpacity>

@@ -3,9 +3,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Rect } from 'react-native-svg';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
-import { OnboardingHeader } from '../../components/ui/OnboardingHeader';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { OnboardingProgress } from '../../components/ui/OnboardingProgress';
 import { Colors, Typography } from '../../theme';
+import { useTranslation } from '../../hooks/useTranslation';
 
 type Step3FirstTreatmentProps = {
   onSmartCapture: () => void;
@@ -14,17 +15,19 @@ type Step3FirstTreatmentProps = {
 };
 
 export function Step3FirstTreatment({ onSmartCapture, onManual, onSkip }: Step3FirstTreatmentProps) {
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <OnboardingHeader />
+        <AppHeaderLogo />
         <OnboardingProgress total={6} activeIndex={2} activeColor={Colors.primary} />
 
         <MCText style={styles.title}>
-          Ajoutons votre premier{'\n'}
-          <MCText style={styles.titleAccent}>médicament</MCText>
+          {t('onboarding.step3.title')}{'\n'}
+          <MCText style={styles.titleAccent}>{t('onboarding.step3.titleAccent')}</MCText>
         </MCText>
-        <MCText style={styles.subtitle}>La façon la plus rapide est de scanner la boîte de votre médicament.</MCText>
+        <MCText style={styles.subtitle}>{t('onboarding.step3.subtitle')}</MCText>
 
         <View style={styles.scanCard}>
           <Svg width={70} height={70} viewBox="0 0 100 60" fill="none">
@@ -46,9 +49,9 @@ export function Step3FirstTreatment({ onSmartCapture, onManual, onSkip }: Step3F
             <Rect x={63} y={33} width={8} height={2} rx={1} fill={Colors.text} />
             <Rect x={63} y={37} width={6} height={2} rx={1} fill={Colors.text} />
           </Svg>
-          <MCText style={styles.scanHint}>Pointez la caméra vers le QR code{'\n'}ou le code-barres de la boîte</MCText>
+          <MCText style={styles.scanHint}>{t('onboarding.step3.scanHint')}</MCText>
           <MCButton
-            label="Scanner une boîte"
+            label={t('treatments.scan')}
             onPress={onSmartCapture}
             style={styles.scanButton}
           />
@@ -56,16 +59,16 @@ export function Step3FirstTreatment({ onSmartCapture, onManual, onSkip }: Step3F
 
         <View style={styles.dividerRow}>
           <View style={styles.dividerLine} />
-          <MCText style={styles.dividerText}>ou</MCText>
+          <MCText style={styles.dividerText}>{t('common.or')}</MCText>
           <View style={styles.dividerLine} />
         </View>
 
         <Pressable style={styles.manualButton} onPress={onManual}>
-          <MCText style={styles.manualLabel}>Ajouter manuellement</MCText>
+          <MCText style={styles.manualLabel}>{t('treatments.manual')}</MCText>
         </Pressable>
 
         <Pressable style={styles.skipButton} onPress={onSkip}>
-          <MCText style={styles.skipLabel}>Passer pour l'instant</MCText>
+          <MCText style={styles.skipLabel}>{t('onboarding.step3.skip')}</MCText>
         </Pressable>
       </ScrollView>
     </SafeAreaView>

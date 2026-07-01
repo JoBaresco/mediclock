@@ -8,57 +8,342 @@
     "line1": "Life flows on,",
     "line2": "we take care of the rest."
   },
+  "splash": {
+    "message": "Let MediClock think about your health\nso you can think about your life."
+  },
   "onboarding": {
-    "welcome": {
-      "title": "Welcome to MediClock",
-      "subtitle": "Let MediClock think about your health so you can think about your life.",
-      "cta": "Get Started"
+    "optionalStepBadge": "Optional step — you can skip it",
+    "step1": {
+      "title": "Welcome to",
+      "subtitle": "Your everyday health companion.",
+      "cta": "Get Started",
+      "features": {
+        "reminders": {
+          "title": "Smart reminders",
+          "subtitle": "Never miss a treatment again"
+        },
+        "tracking": {
+          "title": "Effortless tracking",
+          "subtitle": "Your health organized in seconds"
+        },
+        "circle": {
+          "title": "My Circle",
+          "subtitle": "Share with your loved ones, safely"
+        }
+      }
     },
-    "createSpace": {
+    "step2": {
       "title": "Your personal space",
-      "subtitle": "This will be your space within MediClock.",
-      "namePlaceholder": "Your first name",
+      "subtitle": "Only your first name is required. Everything else can wait.",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "John",
+      "dobLabel": "Date of birth",
+      "dobPlaceholder": "mm / dd / yyyy",
+      "genderLabel": "I am",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "noteBefore": "Editable at any time from",
       "cta": "Continue",
       "skip": "Skip for now"
     },
-    "firstTreatment": {
-      "title": "Add your first treatment",
+    "step3": {
+      "title": "Let's add your first",
+      "titleAccent": "medication",
       "subtitle": "The fastest way is to scan your medication box.",
-      "ctaScan": "Scan a box",
-      "ctaManual": "Add manually",
+      "scanHint": "Point the camera at the QR code\nor the barcode on the box",
       "skip": "Skip for now"
     },
-    "ready": {
+    "step4": {
+      "title": "Let's add an",
+      "titleAccent": "appointment",
+      "subtitle": "This way we'll help you be ready and on time.",
+      "specialtyLabel": "Specialty",
+      "specialtyValue": "Cardiology",
+      "dateLabel": "Date",
+      "dateSample": "07/15/2026",
+      "timeLabel": "Time",
+      "timeSample": "10:00 AM",
+      "doctorLabel": "Doctor",
+      "doctorPlaceholder": "Dr. Doctor's name",
+      "locationLabel": "Location",
+      "locationPlaceholder": "Practice, hospital...",
+      "skip": "Skip this step"
+    },
+    "step5": {
+      "title": "Your circle of",
+      "titleAccent": "trust",
+      "subtitle": "Invite someone you trust so they're kept informed and can help if you need it.",
+      "pillars": {
+        "choose": { "lead": "You decide", "rest": " who joins your circle" },
+        "visibility": { "lead": "You choose", "rest": " what they can see" },
+        "control": { "lead": "You stay", "rest": " in control of your health" }
+      },
+      "cta": "Invite someone",
+      "skip": "I'll do it later"
+    },
+    "step6": {
       "title": "All set!",
-      "subtitle": "We've prepared your space. You can start taking care of your health with peace of mind.",
       "cta": "Enter MediClock"
     }
   },
   "today": {
     "title": "Today",
     "greeting": "Good morning, {{name}}",
+    "date": "{{date}}",
     "status": {
       "allGood": "Everything is under control.",
       "allGoodSub": "No important actions right now.",
       "actionPending": "You have something to do.",
       "attentionRequired": "Something needs your attention.",
-      "noTreatments": "You haven't added any treatments yet."
+      "noTreatments": "You haven't added any treatments yet.",
+      "caregiverMode": "{{name}}'s view"
     },
     "nextAction": "Next action",
     "nextAppointment": "Next appointment",
-    "sampleAction": "08:00 - Morning treatment",
+    "sampleAction": "08:00 — Morning treatment",
     "sampleActionDetail": "3 medications",
     "sampleAppointment": "Cardiology",
-    "sampleAppointmentDetail": "Tomorrow - 10:00",
-    "markDone": "Mark as done"
+    "sampleAppointmentDetail": "Tomorrow — 10:00 AM",
+    "importantInfo": "Important information",
+    "markDone": "I took it",
+    "addTreatment": "Add a treatment",
+    "openSmartCapture": "Open Smart Capture",
+    "treatmentCard": {
+      "markTaken": "Taken",
+      "takenAt": "Taken on {{date}}",
+      "notTakenYet": "Not taken yet today"
+    },
+    "noLocationSpecified": "No location specified",
+    "appointmentDone": "Done",
+    "markAppointmentDone": "Mark as done",
+    "noAppointmentPlanned": "No appointment scheduled.",
+    "addAppointment": "Add appointment",
+    "demoAppointment": {
+      "title": "Cardiologist",
+      "location": "Doctor's office",
+      "doctorName": "Dr. Martin"
+    },
+    "contextual": {
+      "hydration": "Remember to stay well hydrated today.",
+      "stockLow": "Your {{name}} stock is running low. Consider a refill.",
+      "appointmentTomorrow": "You have an appointment tomorrow at {{time}}."
+    }
+  },
+  "treatments": {
+    "title": "Treatments",
+    "active": "Active",
+    "history": "History",
+    "add": "Add a treatment",
+    "scan": "Scan a box",
+    "manual": "Add manually",
+    "empty": "No active treatments.",
+    "emptyHint": "Add your first treatment to get started.",
+    "editMedication": "Edit",
+    "enableNotifications": "Enable notifications",
+    "addMedication": {
+      "title": "Add a medication",
+      "namePlaceholder": "Name",
+      "dosagePlaceholder": "Dosage",
+      "dosageDefault": "1 tablet",
+      "timePlaceholder": "Time (HH:MM)",
+      "everyXDaysPlaceholder": "Every X days (e.g. 2)",
+      "cta": "Add"
+    },
+    "deleteConfirm": {
+      "title": "Confirmation",
+      "message": "Delete this medication? This action can't be undone."
+    },
+    "historyView": {
+      "title": "Dose history",
+      "dayFilter": "Day",
+      "weekFilter": "Week",
+      "empty": "No doses recorded for this filter.",
+      "unknownMedication": "Medication"
+    },
+    "frequencyLabels": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "as_needed": "As needed",
+      "every_x_days": "Every X days",
+      "every_x_days_value": "every {{n}} days"
+    },
+    "types": {
+      "tablet": "Tablet",
+      "capsule": "Capsule",
+      "drops": "Drops",
+      "eye_drops": "Eye drops",
+      "injection": "Injection",
+      "inhaler": "Inhaler",
+      "cream": "Cream",
+      "patch": "Patch",
+      "syrup": "Oral solution",
+      "other": "Other"
+    },
+    "duration": {
+      "single": "Single dose",
+      "days": "{{n}} days",
+      "weeks": "{{n}} weeks",
+      "months": "{{n}} months",
+      "until_empty": "Until box is empty",
+      "specific_date": "Until {{date}}",
+      "indefinite": "Long-term treatment"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "add": "Add a document",
+    "scan": "Scan",
+    "import": "Import",
+    "empty": "No documents saved.",
+    "emptyHint": "Keep your medical documents safe here.",
+    "heroTitle": "Your health documents, all in one place.",
+    "heroSubtitle": "Prescriptions, reports, lab results. Always clear and available.",
+    "emptyTitle": "No documents yet",
+    "emptyBody": "Add a document to start your medical history.",
+    "categories": {
+      "prescription": "Prescription",
+      "analysis": "Lab results",
+      "report_cardiology": "Cardiology",
+      "report_neurology": "Neurology",
+      "report_traumatology": "Trauma care",
+      "report_ophthalmology": "Ophthalmology",
+      "report_radiology": "Radiology",
+      "hospitalization": "Hospitalization",
+      "surgery": "Surgery",
+      "vaccine": "Vaccine",
+      "admin_vitale": "Health insurance card",
+      "admin_insurance": "Supplemental insurance",
+      "admin_ald": "Chronic condition coverage",
+      "admin_certificate": "Certificate",
+      "other": "Other"
+    }
+  },
+  "mySpace": {
+    "title": "My space",
+    "kicker": "My Space",
+    "healthProfile": "Health profile",
+    "myCircle": "My circle",
+    "emergency": "Emergency",
+    "language": "Language",
+    "security": "Security",
+    "backup": "Backup",
+    "subscription": "MediClock Plus",
+    "professionals": "My healthcare providers",
+    "privacy": "Privacy",
+    "heroTitle": "Personal settings and security.",
+    "heroSubtitle": "Manage your circle and your emergency protocol in one place.",
+    "circleCard": {
+      "title": "My Circle",
+      "body": "Invitations, permissions, keeping loved ones in the loop."
+    },
+    "emergencyCard": {
+      "body": "Priority contact and critical actions."
+    },
+    "personalInfo": {
+      "title": "Personal information",
+      "body": "Optional, but useful in an emergency. Editable at any time.",
+      "bloodGroupLabel": "Blood type",
+      "heightLabel": "Height (cm)",
+      "heightPlaceholder": "E.g. 175",
+      "weightLabel": "Weight (kg)",
+      "weightPlaceholder": "E.g. 70"
+    },
+    "autoLock": {
+      "title": "Automatic lock",
+      "body": "Shows the lock screen again after a period of inactivity on the Today screen.",
+      "options": {
+        "never": "Never",
+        "five": "5 min",
+        "fifteen": "15 min",
+        "thirty": "30 min"
+      }
+    }
+  },
+  "emergency": {
+    "title": "Emergency",
+    "subtitle": "In case of emergency",
+    "accessLevel": {
+      "disabled": "Disabled",
+      "app_only": "In the app only",
+      "lock_screen": "From the lock screen",
+      "lock_screen_sos": "Lock screen + SOS"
+    },
+    "quickMessages": {
+      "need_help": "I need help.",
+      "at_hospital": "I'm at the hospital.",
+      "false_alarm": "All good, that was a false alarm.",
+      "back_home": "I'm back home."
+    }
+  },
+  "circle": {
+    "title": "My circle",
+    "subtitle": "The people who support you",
+    "add": "Add a person",
+    "invite": {
+      "byPhone": "By phone",
+      "byEmail": "By email",
+      "byContacts": "From my contacts",
+      "byQR": "MediClock QR code",
+      "byLink": "Secure link"
+    },
+    "roles": {
+      "trusted_person": "Trusted person",
+      "family": "Family",
+      "caregiver": "Caregiver",
+      "doctor": "Doctor",
+      "nurse": "Nurse",
+      "pharmacist": "Pharmacist",
+      "other": "Other"
+    },
+    "quickMessages": {
+      "all_good": "All good.",
+      "took_treatment": "I took my treatment.",
+      "went_for_walk": "I went out for a walk.",
+      "arrived_consultation": "I've arrived at the appointment.",
+      "back_home": "I'm back home.",
+      "going_to_rest": "I'm going to rest.",
+      "need_help": "I need help.",
+      "at_hospital": "I'm at the hospital.",
+      "safely_home": "I got home safely."
+    },
+    "empty": "Your circle is empty for now.",
+    "emptyHint": "Invite someone you trust so they can support you."
+  },
+  "capture": {
+    "title": "Scan a medication",
+    "hint": "Point the camera at the box",
+    "notMedication": "This code doesn't match a medication.",
+    "notMedicationHint": "Make sure you're scanning a medication box.",
+    "retry": "Scan again",
+    "addManually": "Add manually",
+    "recognized": "Medication recognized",
+    "notRecognized": "We couldn't recognize the box. You can try again or add the treatment manually."
+  },
+  "notifications": {
+    "disabled": "Reminders are disabled. You can turn them back on later in settings.",
+    "enableHint": "Enable in settings"
+  },
+  "errors": {
+    "generic": "Something didn't go as planned. We'll sort it out.",
+    "retry": "Retry",
+    "goBack": "Back"
   },
   "common": {
     "continue": "Continue",
     "skip": "Skip",
+    "skipForNow": "Skip for now",
     "save": "Save",
     "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
     "done": "Done",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
     "loading": "Loading...",
-    "optional": "optional"
+    "optional": "optional",
+    "optionalSuffix": "— optional",
+    "back": "Back",
+    "or": "or"
   }
 }
