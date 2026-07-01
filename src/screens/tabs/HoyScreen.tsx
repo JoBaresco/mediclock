@@ -1,6 +1,7 @@
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useMemo } from 'react';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCText } from '../../components/ui/MCText';
@@ -30,13 +31,7 @@ export function HoyScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View style={styles.logoFrame}>
-        <Image
-          source={require('../../../assets/images/Master_MediClock_seul_V.1.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-      </View>
+      <AppHeaderLogo />
       <MCText style={styles.kicker}>Aujourd'hui</MCText>
       <MCText style={styles.title}>Bonjour, Jean</MCText>
       <MCText style={styles.subtitle}>{dateText}</MCText>
@@ -55,7 +50,7 @@ export function HoyScreen() {
           <MCText style={styles.caption}>
             {treatment.lastTakenAt
               ? `Pris le ${new Date(treatment.lastTakenAt).toLocaleString('fr-FR')}`
-              : 'Pas encore pris aujourd\'hui'}
+              : "Pas encore pris aujourd'hui"}
           </MCText>
           <View style={styles.inlineAction}>
             <MCButton label="Pris" size="sm" fullWidth={false} onPress={() => markTreatmentTaken(treatment.id)} />
@@ -68,7 +63,12 @@ export function HoyScreen() {
       </View>
 
       <MCCard style={styles.sectionCard}>
-        <MCText style={styles.sectionLabel}>Prochain rendez-vous</MCText>
+        <View style={styles.sectionLabelRow}>
+          <View style={styles.sectionIconFrame}>
+            <Image source={require('../../../assets/images/Calendrier.png')} style={styles.sectionIcon} resizeMode="contain" />
+          </View>
+          <MCText style={styles.sectionLabel}>Prochain rendez-vous</MCText>
+        </View>
         {nextAppointment ? (
           <>
             <MCText style={styles.sectionValue}>
@@ -124,16 +124,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 20,
     paddingBottom: 120,
-  },
-  logoFrame: {
-    backgroundColor: '#F1F7FF',
-    borderRadius: 20,
-    padding: 10,
-    marginBottom: 16,
-  },
-  logo: {
-    width: 120,
-    height: 40,
   },
   kicker: {
     color: '#2F80ED',
@@ -201,6 +191,20 @@ const styles = StyleSheet.create({
     padding: 18,
     borderWidth: 1,
     borderColor: '#EAF0F6',
+  },
+  sectionLabelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  sectionIconFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 10,
+    padding: 4,
+  },
+  sectionIcon: {
+    width: 20,
+    height: 20,
   },
   sectionLabel: {
     color: '#2F80ED',

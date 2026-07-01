@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
-import { Alert, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Image, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { AppHeaderLogo } from '../components/ui/AppHeaderLogo';
 import { MCButton } from '../components/ui/MCButton';
 import { MCCard } from '../components/ui/MCCard';
 import { MCInput } from '../components/ui/MCInput';
@@ -59,12 +60,19 @@ export function MyCircleScreen() {
       <View style={styles.headerRow}>
         <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
       </View>
+      <AppHeaderLogo />
+      <View style={styles.heroFrame}>
+        <Image source={require('../../assets/images/Cercle_II.png')} style={styles.heroImage} resizeMode="contain" />
+      </View>
       <MCText style={styles.kicker}>Mon Cercle</MCText>
       <MCText style={styles.title}>Votre réseau de confiance.</MCText>
       <MCText style={styles.subtitle}>Invitez proches et aidants pour partager l'essentiel au bon moment.</MCText>
 
       <MCCard style={styles.card}>
-        <MCText style={styles.cardTitle}>Invitation par email</MCText>
+        <View style={styles.cardTitleRow}>
+          <Image source={require('../../assets/images/Famille_Cercle.png')} style={styles.cardIcon} resizeMode="contain" />
+          <MCText style={styles.cardTitle}>Invitation par email</MCText>
+        </View>
         <MCInput placeholder="Nom" value={name} onChangeText={setName} style={styles.input} />
         <MCInput placeholder="Email" value={email} onChangeText={setEmail} style={styles.input} keyboardType="email-address" autoCapitalize="none" />
         <MCButton label="Inviter par email" onPress={onInviteByEmail} />
@@ -103,6 +111,16 @@ const styles = StyleSheet.create({
   headerRow: {
     marginBottom: 12,
   },
+  heroFrame: {
+    backgroundColor: '#F1F7FF',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 18,
+  },
+  heroImage: {
+    width: '100%',
+    height: 170,
+  },
   kicker: {
     color: Colors.primary,
     fontFamily: Typography.fonts.title,
@@ -132,12 +150,21 @@ const styles = StyleSheet.create({
     padding: 18,
     backgroundColor: '#FFFFFF',
   },
+  cardTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  cardIcon: {
+    width: 24,
+    height: 24,
+  },
   cardTitle: {
     color: Colors.text,
     fontFamily: Typography.fonts.title,
     fontSize: 17,
     lineHeight: 22,
-    marginBottom: 8,
   },
   cardBody: {
     color: Colors.muted,

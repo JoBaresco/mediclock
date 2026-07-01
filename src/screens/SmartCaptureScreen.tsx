@@ -1,5 +1,7 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import Svg, { Defs, LinearGradient, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { AppHeaderLogo } from '../components/ui/AppHeaderLogo';
 import { MCButton } from '../components/ui/MCButton';
 import { MCCard } from '../components/ui/MCCard';
 import { MCText } from '../components/ui/MCText';
@@ -10,11 +12,36 @@ export function SmartCaptureScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.logoFrame}>
-        <Image source={require('../../assets/images/Master_MediClock_seul_V.1.png')} style={styles.logo} resizeMode="contain" />
-      </View>
-      <View style={styles.heroFrame}>
-        <Image source={require('../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
+      <AppHeaderLogo />
+      <View style={styles.scannerCard}>
+        <Svg width="100%" height="100%" style={StyleSheet.absoluteFill} viewBox="0 0 300 210" preserveAspectRatio="none">
+          <Defs>
+            <RadialGradient id="glow" cx="50%" cy="50%" r="70%">
+              <Stop offset="0%" stopColor="#2F80ED" stopOpacity={0.08} />
+              <Stop offset="100%" stopColor="#0D1B2A" stopOpacity={0} />
+            </RadialGradient>
+          </Defs>
+          <Rect x={0} y={0} width={300} height={210} fill="url(#glow)" />
+        </Svg>
+
+        <View style={styles.viewfinder}>
+          <View style={[styles.corner, styles.cornerTL]} />
+          <View style={[styles.corner, styles.cornerTR]} />
+          <View style={[styles.corner, styles.cornerBL]} />
+          <View style={[styles.corner, styles.cornerBR]} />
+          <Svg width={154} height={2} style={styles.scanLine}>
+            <Defs>
+              <LinearGradient id="scanline" x1="0" y1="0" x2="1" y2="0">
+                <Stop offset="0" stopColor="#2F80ED" stopOpacity={0} />
+                <Stop offset="0.5" stopColor="#2F80ED" stopOpacity={0.7} />
+                <Stop offset="1" stopColor="#2F80ED" stopOpacity={0} />
+              </LinearGradient>
+            </Defs>
+            <Rect x={0} y={0} width={154} height={2} fill="url(#scanline)" />
+          </Svg>
+        </View>
+
+        <MCText style={styles.scannerCaption}>Pointez vers le QR code ou le code-barres</MCText>
       </View>
       <MCText style={styles.kicker}>Smart Capture</MCText>
       <MCText style={styles.title}>Capturez. MediClock structure.</MCText>
@@ -43,25 +70,68 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 28,
   },
-  logoFrame: {
-    backgroundColor: '#F1F7FF',
-    borderRadius: 20,
-    padding: 10,
-    marginBottom: 16,
-  },
-  logo: {
-    width: 120,
-    height: 40,
-  },
-  heroFrame: {
-    backgroundColor: '#F1F7FF',
-    borderRadius: 20,
-    padding: 10,
+  scannerCard: {
+    backgroundColor: '#0D1B2A',
+    borderRadius: 24,
+    height: 210,
     marginBottom: 18,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  heroImage: {
-    width: '100%',
-    height: 170,
+  viewfinder: {
+    width: 170,
+    height: 125,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  corner: {
+    position: 'absolute',
+    width: 22,
+    height: 22,
+    borderColor: Colors.primary,
+  },
+  cornerTL: {
+    top: 0,
+    left: 0,
+    borderTopWidth: 2.5,
+    borderLeftWidth: 2.5,
+    borderTopLeftRadius: 5,
+  },
+  cornerTR: {
+    top: 0,
+    right: 0,
+    borderTopWidth: 2.5,
+    borderRightWidth: 2.5,
+    borderTopRightRadius: 5,
+  },
+  cornerBL: {
+    bottom: 0,
+    left: 0,
+    borderBottomWidth: 2.5,
+    borderLeftWidth: 2.5,
+    borderBottomLeftRadius: 5,
+  },
+  cornerBR: {
+    bottom: 0,
+    right: 0,
+    borderBottomWidth: 2.5,
+    borderRightWidth: 2.5,
+    borderBottomRightRadius: 5,
+  },
+  scanLine: {
+    opacity: 0.7,
+  },
+  scannerCaption: {
+    position: 'absolute',
+    bottom: 14,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontFamily: Typography.fonts.body,
+    fontSize: 11,
+    fontWeight: '300',
+    color: 'rgba(255,255,255,0.65)',
   },
   kicker: {
     color: Colors.primary,

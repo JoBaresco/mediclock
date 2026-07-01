@@ -1,43 +1,75 @@
-import { Image, StyleSheet, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Svg, { Circle, Line, Path, Rect } from 'react-native-svg';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
+import { OnboardingHeader } from '../../components/ui/OnboardingHeader';
+import { OnboardingProgress } from '../../components/ui/OnboardingProgress';
 import { Colors, Typography } from '../../theme';
 
 type Step6ReadyProps = {
   onFinish: () => void;
 };
 
-export function Step6Ready({ onFinish }: Step6ReadyProps) {
-  const router = useRouter();
+const CHECKLIST = [
+  'Votre espace personnel créé',
+  'Rappels intelligents activés',
+  'Votre santé entre de bonnes mains',
+];
 
+export function Step6Ready({ onFinish }: Step6ReadyProps) {
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
-      <View>
-        <View style={styles.headerRow}>
-          <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
+      <View style={styles.content}>
+        <OnboardingHeader />
+        <OnboardingProgress total={6} activeIndex={-1} activeColor={Colors.success} />
+
+        <View style={styles.iconBox}>
+          <Svg width={95} height={95} viewBox="0 0 110 110" fill="none">
+            <Circle cx={52} cy={52} r={46} stroke={Colors.primary} strokeWidth={5} fill="none" />
+            <Rect x={46} y={10} width={12} height={8} rx={4} fill={Colors.primary} />
+            <Line x1={52} y1={24} x2={52} y2={52} stroke={Colors.primary} strokeWidth={4.5} strokeLinecap="round" />
+            <Line x1={52} y1={52} x2={72} y2={60} stroke={Colors.text} strokeWidth={4.5} strokeLinecap="round" />
+            <Circle cx={52} cy={52} r={4} fill={Colors.primary} />
+            <Line x1={8} y1={52} x2={14} y2={52} stroke={Colors.primary} strokeWidth={3} strokeLinecap="round" />
+            <Line x1={90} y1={52} x2={96} y2={52} stroke={Colors.primary} strokeWidth={3} strokeLinecap="round" />
+            <Path
+              d="M52 72 Q44 64 38 60 Q28 55 30 46 Q32 37 42 37 Q48 37 52 43 Q56 37 62 37 Q72 37 74 46 Q76 55 66 60 Q60 64 52 72Z"
+              fill={Colors.danger}
+            />
+          </Svg>
+          <View style={styles.checkBadge}>
+            <Svg width={14} height={14} viewBox="0 0 24 24" fill="none">
+              <Path d="M5 13l4 4L19 7" stroke="#FFFFFF" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+            </Svg>
+          </View>
         </View>
-        <MCText style={styles.step}>Étape 6/6</MCText>
-        <MCText style={styles.title}>Votre espace MediClock est prêt</MCText>
-        <MCText style={styles.subtitle}>
-          Une expérience claire, calme et rapide pour piloter votre quotidien santé.
+
+        <MCText style={styles.title}>
+          Tout est <MCText style={styles.titleAccent}>prêt</MCText> !
         </MCText>
+        <MCText style={styles.subtitle}>Votre espace est prêt.</MCText>
 
-        <Image
-          source={require('../../../assets/images/silhoutte_bout_chemin_II.png')}
-          style={styles.illustration}
-          resizeMode="contain"
-        />
+        <View style={styles.checklist}>
+          {CHECKLIST.map((item) => (
+            <View key={item} style={styles.checklistRow}>
+              <View style={styles.checklistIconBox}>
+                <Svg width={14} height={14} viewBox="0 0 24 24" fill="none">
+                  <Path d="M5 13l4 4L19 7" stroke={Colors.success} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+                </Svg>
+              </View>
+              <MCText style={styles.checklistText}>{item}</MCText>
+            </View>
+          ))}
+        </View>
 
-        <View style={styles.card}>
-          <MCText style={styles.cardTitle}>Configuration terminée</MCText>
-          <MCText style={styles.cardBody}>Vous pouvez maintenant accéder à l'écran d'aujourd'hui.</MCText>
+        <View style={styles.quoteBox}>
+          <MCText style={styles.quoteText}>"La vie continue,{'\n'}on s'occupe du reste."</MCText>
         </View>
       </View>
 
       <View style={styles.actions}>
-        <MCButton label="Aller à l'écran d'aujourd'hui" onPress={onFinish} />
+        <MCButton label="Entrer dans MediClock" onPress={onFinish} style={styles.primaryButton} />
       </View>
     </SafeAreaView>
   );
@@ -48,60 +80,104 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     paddingHorizontal: 22,
-    paddingTop: 18,
-    paddingBottom: 14,
+    paddingTop: 20,
+    paddingBottom: 20,
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  headerRow: {
-    marginBottom: 12,
+  content: {
+    width: '100%',
+    alignItems: 'center',
   },
-  step: {
-    color: Colors.primary,
-    fontFamily: Typography.fonts.title,
-    fontSize: 12,
-    lineHeight: 14,
-    marginBottom: 14,
+  iconBox: {
+    width: 130,
+    height: 130,
+    backgroundColor: Colors.softBlueSurface,
+    borderRadius: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 18,
+  },
+  checkBadge: {
+    position: 'absolute',
+    bottom: -8,
+    right: -8,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: Colors.success,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: Colors.background,
   },
   title: {
-    color: Colors.text,
     fontFamily: Typography.fonts.title,
-    fontSize: 34,
-    lineHeight: 40,
-    marginBottom: 8,
+    fontSize: 22,
+    color: Colors.text,
+    textAlign: 'center',
+    marginBottom: 4,
+  },
+  titleAccent: {
+    fontFamily: Typography.fonts.title,
+    fontSize: 22,
+    color: Colors.success,
   },
   subtitle: {
+    fontFamily: Typography.fonts.body,
+    fontSize: 13,
     color: Colors.muted,
-    fontFamily: Typography.fonts.body,
-    fontSize: 15,
-    lineHeight: 23,
-    marginBottom: 12,
+    textAlign: 'center',
+    lineHeight: 21,
+    marginBottom: 20,
   },
-  illustration: {
+  checklist: {
     width: '100%',
-    height: 170,
-    marginBottom: 12,
+    gap: 8,
+    marginBottom: 20,
   },
-  card: {
-    borderRadius: 18,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#EAF0F6',
-    padding: 16,
+  checklistRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
   },
-  cardTitle: {
-    color: Colors.primary,
-    fontFamily: Typography.fonts.title,
-    fontSize: 14,
-    lineHeight: 18,
-    marginBottom: 6,
+  checklistIconBox: {
+    width: 26,
+    height: 26,
+    borderRadius: 8,
+    backgroundColor: '#F0FBF5',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  cardBody: {
-    color: Colors.text,
+  checklistText: {
     fontFamily: Typography.fonts.body,
-    fontSize: 16,
+    fontSize: 13,
+    color: Colors.text,
+  },
+  quoteBox: {
+    width: '100%',
+    backgroundColor: Colors.softBlueSurface,
+    borderRadius: 16,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    borderLeftWidth: 3,
+    borderLeftColor: Colors.primary,
+    alignItems: 'center',
+  },
+  quoteText: {
+    fontFamily: Typography.fonts.title,
+    fontSize: 13,
+    color: Colors.primary,
+    textAlign: 'center',
     lineHeight: 22,
+    fontStyle: 'italic',
   },
   actions: {
-    marginTop: 12,
+    width: '100%',
+  },
+  primaryButton: {
+    borderRadius: 16,
   },
 });

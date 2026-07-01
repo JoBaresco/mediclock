@@ -1,5 +1,6 @@
 import { Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCText } from '../../components/ui/MCText';
 import { Typography } from '../../theme';
@@ -9,13 +10,7 @@ export function MySpaceScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View style={styles.logoFrame}>
-        <Image
-          source={require('../../../assets/images/Master_MediClock_seul_V.1.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-      </View>
+      <AppHeaderLogo />
       <View style={styles.heroFrame}>
         <Image source={require('../../../assets/images/Cercle_II.png')} style={styles.heroImage} resizeMode="contain" />
       </View>
@@ -55,16 +50,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 24,
     paddingBottom: 120,
-  },
-  logoFrame: {
-    backgroundColor: '#F1F7FF',
-    borderRadius: 20,
-    padding: 10,
-    marginBottom: 16,
-  },
-  logo: {
-    width: 120,
-    height: 40,
   },
   heroFrame: {
     backgroundColor: '#F1F7FF',

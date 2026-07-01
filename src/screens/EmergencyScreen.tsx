@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Alert, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Image, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { AppHeaderLogo } from '../components/ui/AppHeaderLogo';
 import { MCButton } from '../components/ui/MCButton';
 import { MCCard } from '../components/ui/MCCard';
 import { MCInput } from '../components/ui/MCInput';
@@ -91,12 +92,19 @@ export function EmergencyScreen() {
       <View style={styles.headerRow}>
         <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
       </View>
+      <AppHeaderLogo />
+      <View style={styles.heroFrame}>
+        <Image source={require('../../assets/images/Urgence.png')} style={styles.heroImage} resizeMode="contain" />
+      </View>
       <MCText style={styles.kicker}>Urgence</MCText>
       <MCText style={styles.title}>Accès rapide en situation critique.</MCText>
       <MCText style={styles.subtitle}>Concentrez vos contacts, consignes et informations essentielles au même endroit.</MCText>
 
       <MCCard style={styles.alertCard}>
-        <MCText style={styles.alertTitle}>Contacts d'urgence</MCText>
+        <View style={styles.alertTitleRow}>
+          <Image source={require('../../assets/images/sos.png')} style={styles.sosIcon} resizeMode="contain" />
+          <MCText style={styles.alertTitle}>Contacts d'urgence</MCText>
+        </View>
         <MCInput placeholder="Nom" value={name} onChangeText={setName} style={styles.input} />
         <MCInput placeholder="Relation" value={relationship} onChangeText={setRelationship} style={styles.input} />
         <MCInput placeholder="Téléphone" value={phone} onChangeText={setPhone} style={styles.input} keyboardType="phone-pad" />
@@ -144,6 +152,16 @@ const styles = StyleSheet.create({
   headerRow: {
     marginBottom: 12,
   },
+  heroFrame: {
+    backgroundColor: '#FDEEEE',
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 18,
+  },
+  heroImage: {
+    width: '100%',
+    height: 170,
+  },
   kicker: {
     color: Colors.danger,
     fontFamily: Typography.fonts.title,
@@ -173,12 +191,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     padding: 18,
   },
+  alertTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  sosIcon: {
+    width: 22,
+    height: 22,
+  },
   alertTitle: {
     color: Colors.danger,
     fontFamily: Typography.fonts.title,
     fontSize: 17,
     lineHeight: 22,
-    marginBottom: 8,
   },
   alertBody: {
     color: Colors.text,

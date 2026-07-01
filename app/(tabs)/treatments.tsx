@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Alert, Image, Platform, View, StyleSheet, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
+import { AppHeaderLogo } from '../../src/components/ui/AppHeaderLogo';
 import { MCText } from '../../src/components/ui/MCText';
 import { MCCard } from '../../src/components/ui/MCCard';
 import { MCButton } from '../../src/components/ui/MCButton';
@@ -200,13 +201,7 @@ export default function TreatmentsScreen() {
         <View style={styles.backRow}>
           <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
         </View>
-        <View style={styles.logoFrame}>
-          <Image
-            source={require('../../assets/images/Master_MediClock_seul_V.1.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-        </View>
+        <AppHeaderLogo />
         <View style={styles.heroFrame}>
           <Image source={require('../../assets/images/Pilule.png')} style={styles.heroImage} resizeMode="contain" />
         </View>
@@ -368,16 +363,6 @@ const styles = StyleSheet.create({
   },
   backRow: {
     marginBottom: Spacing.sm,
-  },
-  logoFrame: {
-    backgroundColor: '#F1F7FF',
-    borderRadius: 20,
-    padding: 10,
-    marginBottom: Spacing.sm,
-  },
-  logo: {
-    width: 120,
-    height: 40,
   },
   heroFrame: {
     backgroundColor: '#F1F7FF',

@@ -1,5 +1,6 @@
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCButton } from '../../components/ui/MCButton';
 import { MCText } from '../../components/ui/MCText';
@@ -13,6 +14,7 @@ export function DocumentsScreen() {
       <View style={styles.headerRow}>
         <MCButton label="Retour" variant="ghost" fullWidth={false} onPress={() => router.back()} />
       </View>
+      <AppHeaderLogo />
       <View style={styles.imageFrame}>
         <Image source={require('../../../assets/images/Dossier_Medical.png')} style={styles.heroImage} resizeMode="contain" />
       </View>
