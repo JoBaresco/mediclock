@@ -7,7 +7,7 @@ export default function FirstTreatmentScreen() {
   return (
     <Step3FirstTreatment
       onSmartCapture={() => router.push('/smart-capture')}
-      onManual={() => router.push('/(onboarding)/first-appointment')}
+      onManual={() => router.push('/(tabs)/treatments')}
       onSkip={() => router.push('/(onboarding)/first-appointment')}
     />
   );
