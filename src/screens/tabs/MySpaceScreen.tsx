@@ -6,19 +6,24 @@ import { AppHeaderLogo } from '../../components/ui/AppHeaderLogo';
 import { MCCard } from '../../components/ui/MCCard';
 import { MCInput } from '../../components/ui/MCInput';
 import { MCText } from '../../components/ui/MCText';
+import { MCSelect } from '../../components/ui/MCSelect';
+import { SaveToast } from '../../components/ui/SaveToast';
 import { TabScreenScrollView } from '../../components/ui/TabScreenScrollView';
 import { Colors, Typography } from '../../theme';
 import { DEFAULT_INACTIVITY_TIMEOUT_MINUTES, INACTIVITY_TIMEOUT_KEY } from '../../hooks/useInactivityTimer';
+import { useSaveToast } from '../../hooks/useSaveToast';
 import { useUserStore } from '../../store/useUserStore';
 import type { BloodGroup } from '../../types/user.types';
 import { useTranslation } from '../../hooks/useTranslation';
+import { SUPPORTED_LANGUAGES, setAppLanguage, type SupportedLanguage } from '../../i18n/language';
 
 const BLOOD_GROUPS: BloodGroup[] = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
 export function MySpaceScreen() {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [inactivityMinutes, setInactivityMinutes] = useState(DEFAULT_INACTIVITY_TIMEOUT_MINUTES);
+  const saveToast = useSaveToast();
 
   const INACTIVITY_OPTIONS = [
     { label: t('mySpace.autoLock.options.never'), minutes: 0 },
@@ -26,16 +31,28 @@ export function MySpaceScreen() {
     { label: t('mySpace.autoLock.options.fifteen'), minutes: 15 },
     { label: t('mySpace.autoLock.options.thirty'), minutes: 30 },
   ];
+  const languageOptions = SUPPORTED_LANGUAGES.map((language) => ({
+    value: language,
+    label: t(`mySpace.languageNames.${language}`),
+  }));
+
+  const onSelectLanguage = (language: string) => {
+    void setAppLanguage(language as SupportedLanguage);
+    saveToast.show();
+  };
 
   const profile = useUserStore((state) => state.profile);
+  const hydrated = useUserStore((state) => state.hydrated);
   const ensureProfile = useUserStore((state) => state.ensureProfile);
   const updateProfile = useUserStore((state) => state.updateProfile);
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
 
   useEffect(() => {
-    ensureProfile();
-  }, [ensureProfile]);
+    if (hydrated) {
+      ensureProfile();
+    }
+  }, [hydrated, ensureProfile]);
 
   useEffect(() => {
     setWeight(profile?.weight ? String(profile.weight) : '');
@@ -57,20 +74,24 @@ export function MySpaceScreen() {
   const onSelectInactivity = (minutes: number) => {
     setInactivityMinutes(minutes);
     void AsyncStorage.setItem(INACTIVITY_TIMEOUT_KEY, String(minutes));
+    saveToast.show();
   };
 
   const onSelectBloodGroup = (bloodGroup: BloodGroup) => {
     updateProfile({ bloodGroup });
+    saveToast.show();
   };
 
   const onBlurWeight = () => {
     const parsed = Number(weight.replace(',', '.'));
     updateProfile({ weight: weight.trim() && Number.isFinite(parsed) && parsed > 0 ? parsed : undefined });
+    saveToast.show();
   };
 
   const onBlurHeight = () => {
     const parsed = Number(height.replace(',', '.'));
     updateProfile({ height: height.trim() && Number.isFinite(parsed) && parsed > 0 ? parsed : undefined });
+    saveToast.show();
   };
 
   return (
@@ -173,6 +194,20 @@ export function MySpaceScreen() {
           })}
         </View>
       </MCCard>
+
+      <MCCard style={styles.card}>
+        <MCText style={styles.cardTitle}>{t('mySpace.languageSection.title')}</MCText>
+        <MCText style={styles.cardBody}>
+          {t('mySpace.languageSection.body')}
+        </MCText>
+        <MCSelect
+          value={i18n.language}
+          options={languageOptions}
+          onSelect={onSelectLanguage}
+          style={styles.languageSelect}
+        />
+      </MCCard>
+      <SaveToast visible={saveToast.visible} message={t('common.saved')} />
     </TabScreenScrollView>
   );
 }
@@ -276,6 +311,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,
+    marginTop: 14,
+  },
+  languageSelect: {
     marginTop: 14,
   },
   optionPill: {

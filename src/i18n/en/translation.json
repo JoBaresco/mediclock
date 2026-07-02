@@ -58,11 +58,8 @@
       "titleAccent": "appointment",
       "subtitle": "This way we'll help you be ready and on time.",
       "specialtyLabel": "Specialty",
-      "specialtyValue": "Cardiology",
       "dateLabel": "Date",
-      "dateSample": "07/15/2026",
       "timeLabel": "Time",
-      "timeSample": "10:00 AM",
       "doctorLabel": "Doctor",
       "doctorPlaceholder": "Dr. Doctor's name",
       "locationLabel": "Location",
@@ -257,6 +254,15 @@
         "fifteen": "15 min",
         "thirty": "30 min"
       }
+    },
+    "languageSection": {
+      "title": "Language",
+      "body": "Choose the language used throughout the app."
+    },
+    "languageNames": {
+      "fr": "Français",
+      "es": "Español",
+      "en": "English"
     }
   },
   "emergency": {
@@ -344,6 +350,51 @@
     "optional": "optional",
     "optionalSuffix": "— optional",
     "back": "Back",
-    "or": "or"
+    "or": "or",
+    "add": "Add",
+    "specialtyPlaceholder": "Choose a specialty",
+    "locationTypePlaceholder": "Choose a location type",
+    "saved": "Saved",
+    "otherPlaceholder": "Please specify"
+  },
+  "medicalSpecialties": {
+    "generalist": "General practitioner",
+    "cardiology": "Cardiology",
+    "dermatology": "Dermatology",
+    "gynecology": "Gynecology",
+    "ophthalmology": "Ophthalmology",
+    "ent": "ENT",
+    "pediatrics": "Pediatrics",
+    "psychiatry": "Psychiatry",
+    "rheumatology": "Rheumatology",
+    "neurology": "Neurology",
+    "gastroenterology": "Gastroenterology",
+    "endocrinology": "Endocrinology",
+    "dentist": "Dentist",
+    "physiotherapist": "Physiotherapist",
+    "other": "Other"
+  },
+  "appointmentLocationTypes": {
+    "hospital": "Hospital",
+    "clinic": "Clinic",
+    "office": "Practice",
+    "other": "Other"
+  },
+  "bloodPressure": {
+    "title": "Blood pressure",
+    "cardTitle": "Blood pressure",
+    "cardBody": "Track your blood pressure readings over time.",
+    "heroTitle": "Track your blood pressure.",
+    "heroSubtitle": "Log your readings and keep a simple, clear history.",
+    "addMeasurement": "Add a reading",
+    "systolic": "Systolic",
+    "diastolic": "Diastolic",
+    "unit": "mmHg",
+    "save": "Save reading",
+    "cancel": "Cancel",
+    "historyTitle": "History",
+    "empty": "No readings recorded yet.",
+    "emptyHint": "Add your first reading to start tracking.",
+    "reading": "{{systolic}}/{{diastolic}} {{unit}}"
   }
 }

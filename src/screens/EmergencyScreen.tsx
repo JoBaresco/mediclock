@@ -13,6 +13,7 @@ import { isValidPhone } from '../utils/validation.utils';
 export function EmergencyScreen() {
   const router = useRouter();
   const profile = useUserStore((state) => state.profile);
+  const hydrated = useUserStore((state) => state.hydrated);
   const ensureProfile = useUserStore((state) => state.ensureProfile);
   const addEmergencyContact = useUserStore((state) => state.addEmergencyContact);
   const updateEmergencyContact = useUserStore((state) => state.updateEmergencyContact);
@@ -24,8 +25,10 @@ export function EmergencyScreen() {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
-    ensureProfile();
-  }, [ensureProfile]);
+    if (hydrated) {
+      ensureProfile();
+    }
+  }, [hydrated, ensureProfile]);
 
   const contacts = profile?.emergencyContacts ?? [];
 

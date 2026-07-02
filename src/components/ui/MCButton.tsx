@@ -14,6 +14,7 @@ interface MCButtonProps {
   disabled?: boolean;
   fullWidth?: boolean;
   style?: ViewStyle;
+  hitSlop?: number;
 }
 
 export const MCButton: React.FC<MCButtonProps> = ({
@@ -24,12 +25,14 @@ export const MCButton: React.FC<MCButtonProps> = ({
   disabled = false,
   fullWidth = true,
   style,
+  hitSlop,
 }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled}
       activeOpacity={0.8}
+      hitSlop={hitSlop ? { top: hitSlop, bottom: hitSlop, left: hitSlop, right: hitSlop } : undefined}
       style={[
         styles.base,
         styles[variant],

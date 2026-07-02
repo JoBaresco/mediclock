@@ -85,7 +85,7 @@ export function Step5MyCircle({ onContinue, onSkip }: Step5MyCircleProps) {
 
         <View style={styles.actions}>
           <MCButton label={t('onboarding.step5.cta')} onPress={onContinue} style={styles.primaryButton} />
-          <Pressable style={styles.skipButton} onPress={onSkip}>
+          <Pressable style={styles.skipButton} onPress={onSkip} hitSlop={16}>
             <MCText style={styles.skipLabel}>{t('onboarding.step5.skip')}</MCText>
           </Pressable>
         </View>

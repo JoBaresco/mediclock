@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react';
-import { Alert, Image, Platform, View, StyleSheet } from 'react-native';
+import { Alert, Image, Platform, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import { AppHeaderLogo } from '../../src/components/ui/AppHeaderLogo';
 import { MCText } from '../../src/components/ui/MCText';
 import { MCCard } from '../../src/components/ui/MCCard';
 import { MCButton } from '../../src/components/ui/MCButton';
 import { MCInput } from '../../src/components/ui/MCInput';
+import { MCDateTimePicker } from '../../src/components/ui/MCDateTimePicker';
 import { TabScreenScrollView } from '../../src/components/ui/TabScreenScrollView';
 import { Colors, Spacing } from '../../src/design-system';
 import { useTranslation } from '../../src/hooks/useTranslation';
@@ -78,6 +79,20 @@ export default function TreatmentsScreen() {
     }
 
     return { hour, minute };
+  };
+
+  const timeAsDate = useMemo(() => {
+    const parsed = parseTime(time);
+    const date = new Date();
+    date.setHours(parsed?.hour ?? 8, parsed?.minute ?? 0, 0, 0);
+    return date;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [time]);
+
+  const onTimeChange = (date: Date) => {
+    const hh = String(date.getHours()).padStart(2, '0');
+    const mm = String(date.getMinutes()).padStart(2, '0');
+    setTime(`${hh}:${mm}`);
   };
 
   const onAddTreatment = async () => {
@@ -215,7 +230,13 @@ export default function TreatmentsScreen() {
         <MCText style={styles.formTitle}>{t('treatments.addMedication.title')}</MCText>
         <MCInput placeholder={t('treatments.addMedication.namePlaceholder')} value={name} onChangeText={setName} style={styles.input} />
         <MCInput placeholder={t('treatments.addMedication.dosagePlaceholder')} value={dosage} onChangeText={setDosage} style={styles.input} />
-        <MCInput placeholder={t('treatments.addMedication.timePlaceholder')} value={time} onChangeText={setTime} style={styles.input} />
+        <MCDateTimePicker
+          mode="time"
+          value={timeAsDate}
+          onChange={onTimeChange}
+          label={timeAsDate.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })}
+          style={styles.input}
+        />
 
         <View style={styles.medFrequencyGrid}>
           <View style={styles.medFrequencyRow}>
@@ -268,6 +289,15 @@ export default function TreatmentsScreen() {
 
         <MCButton label={editingTreatmentId ? t('common.save') : t('treatments.addMedication.cta')} onPress={onAddTreatment} />
       </MCCard>
+
+      <TouchableOpacity activeOpacity={0.86} onPress={() => router.push('/blood-pressure')}>
+        <MCCard style={styles.card}>
+          <MCText style={styles.cardTitle}>{t('bloodPressure.cardTitle')}</MCText>
+          <MCText variant="small" color="secondary" style={styles.hint}>
+            {t('bloodPressure.cardBody')}
+          </MCText>
+        </MCCard>
+      </TouchableOpacity>
 
       {!hasNotificationsPermission ? (
         <View style={styles.permissionBlock}>

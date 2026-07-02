@@ -58,11 +58,8 @@
       "titleAccent": "consultation",
       "subtitle": "Ainsi nous vous aiderons à être préparé et à l'heure.",
       "specialtyLabel": "Spécialité",
-      "specialtyValue": "Cardiologie",
       "dateLabel": "Date",
-      "dateSample": "15/07/2026",
       "timeLabel": "Heure",
-      "timeSample": "10:00",
       "doctorLabel": "Médecin",
       "doctorPlaceholder": "Dr. Nom du médecin",
       "locationLabel": "Lieu",
@@ -257,6 +254,15 @@
         "fifteen": "15 min",
         "thirty": "30 min"
       }
+    },
+    "languageSection": {
+      "title": "Langue",
+      "body": "Choisissez la langue utilisée dans toute l'application."
+    },
+    "languageNames": {
+      "fr": "Français",
+      "es": "Español",
+      "en": "English"
     }
   },
   "emergency": {
@@ -344,6 +350,51 @@
     "optional": "optionnel",
     "optionalSuffix": "— optionnel",
     "back": "Retour",
-    "or": "ou"
+    "or": "ou",
+    "add": "Ajouter",
+    "specialtyPlaceholder": "Choisir une spécialité",
+    "locationTypePlaceholder": "Choisir un type de lieu",
+    "saved": "Enregistré",
+    "otherPlaceholder": "Précisez"
+  },
+  "medicalSpecialties": {
+    "generalist": "Généraliste",
+    "cardiology": "Cardiologie",
+    "dermatology": "Dermatologie",
+    "gynecology": "Gynécologie",
+    "ophthalmology": "Ophtalmologie",
+    "ent": "ORL",
+    "pediatrics": "Pédiatrie",
+    "psychiatry": "Psychiatrie",
+    "rheumatology": "Rhumatologie",
+    "neurology": "Neurologie",
+    "gastroenterology": "Gastro-entérologie",
+    "endocrinology": "Endocrinologie",
+    "dentist": "Dentiste",
+    "physiotherapist": "Kinésithérapeute",
+    "other": "Autre"
+  },
+  "appointmentLocationTypes": {
+    "hospital": "Hôpital",
+    "clinic": "Clinique",
+    "office": "Cabinet",
+    "other": "Autre"
+  },
+  "bloodPressure": {
+    "title": "Tension artérielle",
+    "cardTitle": "Tension artérielle",
+    "cardBody": "Suivez vos mesures de tension au fil du temps.",
+    "heroTitle": "Suivi de votre tension.",
+    "heroSubtitle": "Enregistrez vos mesures et gardez un historique simple et clair.",
+    "addMeasurement": "Ajouter une mesure",
+    "systolic": "Systolique",
+    "diastolic": "Diastolique",
+    "unit": "mmHg",
+    "save": "Enregistrer la mesure",
+    "cancel": "Annuler",
+    "historyTitle": "Historique",
+    "empty": "Aucune mesure enregistrée pour le moment.",
+    "emptyHint": "Ajoutez votre première mesure pour commencer le suivi.",
+    "reading": "{{systolic}}/{{diastolic}} {{unit}}"
   }
 }

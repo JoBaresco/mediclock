@@ -67,7 +67,7 @@ export function Step3FirstTreatment({ onSmartCapture, onManual, onSkip }: Step3F
           <MCText style={styles.manualLabel}>{t('treatments.manual')}</MCText>
         </Pressable>
 
-        <Pressable style={styles.skipButton} onPress={onSkip}>
+        <Pressable style={styles.skipButton} onPress={onSkip} hitSlop={16}>
           <MCText style={styles.skipLabel}>{t('onboarding.step3.skip')}</MCText>
         </Pressable>
       </ScrollView>
